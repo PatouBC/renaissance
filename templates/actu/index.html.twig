@@ -21,7 +21,7 @@
                 <td>{{ actu.id }}</td>
                 <td>{{ actu.title }}</td>
                 <td>{{ actu.description }}</td>
-                <td><img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/></td>
+                <td>{% if(actu.image) %}<img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/>{% endif %}</td>
                 <td>
                     <a href="{{ path('actu_show', {'id': actu.id}) }}">show</a>
                     <a href="{{ path('actu_edit', {'id': actu.id}) }}">edit</a>

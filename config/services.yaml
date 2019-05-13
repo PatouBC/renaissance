@@ -28,6 +28,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+
     circular_reference_handler:
         public: false
         class: callback
@@ -43,3 +45,7 @@ services:
               arguments: [1]
             - method: setCircularReferenceHandler
               arguments: ["@circular_reference_handler"]
+
+    form.type.model.subcategoryType:
+        class: App\Form\SubcategoryType
+        arguments: ["@doctrine.orm.entity_manager"]

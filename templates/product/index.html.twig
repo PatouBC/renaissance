@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h1>Product index</h1>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Indication</th>
+                        <th>Effets</th>
+                        <th>Famille d'émotions</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.state }}</td>
+                            <td>{{ product.effect }}</td>
+                            <td>
+                                {% for indication in product.indications %}
+                                    <div>{{ indication }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{{ path('product_show', {'id': product.id}) }}">Supprimer</a>
+                                <a href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+        </tbody>
+    </table>
+
+    <a href="{{ path('product_new') }}">Create new</a>
+{% endblock %}
