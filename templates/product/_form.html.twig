@@ -1,4 +1,29 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="justify-content-center">
+        <div>
+            <h6>Nom</h6>
+        </div>
+        <div>
+            {{ form_widget(form.name)}}
+        </div>
+        <div>
+            <h6>Etat émotionnel</h6>
+        </div>
+        <div>
+            {{ form_widget(form.state)}}
+        </div>
+        <div>
+            <h6>Effets</h6>
+        </div>
+        <div>
+            {{ form_widget(form.effect)}}
+        </div>
+        <div>
+            <h6>Famille d'émotions</h6>
+        </div>
+        <div>
+            {{ form_widget(form.indications)}}
+        </div>
+        <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    </div>
 {{ form_end(form) }}

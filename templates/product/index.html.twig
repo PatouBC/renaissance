@@ -6,17 +6,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-9">
-                <h1>Product index</h1>
+                <h1>Liste des produits</h1>
 
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nom</th>
-                        <th>Indication</th>
+                        <th>Etat émotionnel</th>
                         <th>Effets</th>
                         <th>Famille d'émotions</th>
-                        <th>actions</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,13 +32,22 @@
                                 {% endfor %}
                             </td>
                             <td>
-                                <a href="{{ path('product_show', {'id': product.id}) }}">Supprimer</a>
-                                <a href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>
+                                <div>
+                                    <a href="{{ path('product_show', {'id': product.id}) }}">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                                <div >
+                                    <a  href="{{ path('product_edit', {'id': product.id}) }}">
+                                        <i class="fas fa-edit" ></i>
+                                    </a>
+                                </div>
+
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="5">no records found</td>
+                            <td colspan="5">Aucun produit trouvé</td>
                         </tr>
                     {% endfor %}
 
@@ -48,5 +57,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('product_new') }}">Create new</a>
+    <a href="{{ path('product_new') }}">Créer un produit</a>
 {% endblock %}
