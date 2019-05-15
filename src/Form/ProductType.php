@@ -26,7 +26,7 @@ class ProductType extends AbstractType
                     return $category->getTitle();
                 }
             ))
-        ;
+            ->add('image', ImageType::class)        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

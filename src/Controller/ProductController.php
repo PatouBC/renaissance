@@ -3,15 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\Image;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Tests\Compiler\F;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/product")
+ * @Route("/product", host="renaissance-terrehappy.fr")
  */
 class ProductController extends AbstractController
 {
@@ -36,6 +39,27 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $form->get('image')->get('file')->getData();
+            if($file){
+                $image = new Image();
+                $fileName=$this->generateUniqueFileName().'.'.$file->guessExtension();
+
+                try{
+                    $file->move(
+                        $this->getParameter('image_abs_path'),
+                        $fileName
+                    );
+                }catch (FileException $e){
+
+                }
+                $image->setPath($this->getParameter('image_abs_path').'/'.$fileName);
+                $image->setImgPath($this->getParameter('image_path').'/'.$fileName);
+                $entityManager->persist($image);
+                $product->setImage($image);
+            }else{
+                $product->setImage(null);
+            }
             $entityManager->persist($product);
             $entityManager->flush();
 
@@ -46,6 +70,13 @@ class ProductController extends AbstractController
             'product' => $product,
             'form' => $form->createView(),
         ]);
+    }
+    /**
+     * @return string
+     */
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
     }
 
     /**
@@ -67,7 +98,32 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $image = $product->getImage();
+            $file = $form->get('image')->get('file')->getData();
+            if ($file) {
+                $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
+
+                try {
+                    $file->move(
+                        $this->getParameter('image_abs_path'),
+                        $fileName
+                    );
+                } catch (FileException $e) {
+
+                }
+                $this->removeFile($image->getPath());
+
+                $image->setPath($this->getParameter('image_abs_path') . '/' . $fileName);
+                $image->setImgPath($this->getParameter('image_path') . '/' . $fileName);
+                $entityManager->persist($image);
+                $product->setImage($image);
+            }
+            if (empty($image->getId()) && !$file) {
+                $product->setImage(null);
+            }
+            $entityManager->flush();
 
             return $this->redirectToRoute('product_index', [
                 'id' => $product->getId(),
@@ -86,6 +142,10 @@ class ProductController extends AbstractController
     public function delete(Request $request, Product $product): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+            $image = $product->getImage();
+            if($image){
+                $this->removeFile($image->getPath());
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();
@@ -93,4 +153,28 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('product_index');
     }
+    /**
+     * @Route("/{id}", name="actu_image_delete", methods={"POST"})
+     */
+    public function deleteImg(Request $request, Product $product): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $image = $product->getImage();
+            $this->removeFile($image->getPath());
+            $product->setImage(null);
+            $entityManager->remove($image);
+            $entityManager->persist($product);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('product_edit', array('id'=>$product->getId()));
+    }
+    private function removeFile($path)
+    {
+        if(file_exists($path))
+        {
+            unlink($path);
+        }
+    }
+
 }

@@ -12,8 +12,9 @@
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nom</th>
                         <th>Catégorie</th>
+                        <th>Image</th>
+                        <th>Nom</th>
                         <th>Etat émotionnel</th>
                         <th>Effets</th>
                         <th>Indication</th>
@@ -24,8 +25,9 @@
                     {% for product in products %}
                         <tr>
                             <td>{{ product.id }}</td>
-                            <td>{{ product.name }}</td>
                             <td>{{ product.category.title }}</td>
+                            <td>{% if(product.image) %}<img src="{{ asset(product.image.imgpath) }}" width="150px" alt="{{ product.image.alt }}"/>{% endif %}</td>
+                            <td>{{ product.name }}</td>
                             <td>{{ product.state }}</td>
                             <td>{{ product.effect }}</td>
                             <td>
