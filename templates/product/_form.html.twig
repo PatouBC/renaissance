@@ -7,6 +7,12 @@
             {{ form_widget(form.name)}}
         </div>
         <div>
+             <h6>Catégorie</h6>
+        </div>
+        <div>
+            {{ form(form.category)}}
+        </div>
+        <div>
             <h6>Etat émotionnel</h6>
         </div>
         <div>
@@ -24,6 +30,7 @@
         <div>
             {{ form_widget(form.indications)}}
         </div>
+        {{ form_rest(form) }}
         <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
     </div>
 {{ form_end(form) }}

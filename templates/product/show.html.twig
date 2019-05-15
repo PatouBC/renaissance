@@ -27,6 +27,15 @@
                         <th>Effet</th>
                         <td>{{ product.effect }}</td>
                     </tr>
+                    <tr>
+                        <th>Indication</th>
+                        <td>
+                            {% for indication in product.indications %}
+                                <div>{{ indication }}</div>
+                            {% endfor %}
+                        </td>
+
+                    </tr>
                     </tbody>
                 </table>
                 <div >

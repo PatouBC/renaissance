@@ -48,4 +48,4 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/actu, role: ROLE_USER, host: api\.renaissance\-terrehappy\.fr}
 #        - { path: ^/actu, role: ROLE_USER, host: renaissance\-terrehappy\.fr}
-#        - { path: ^/admin, role: ROLE_ADMIN }
+#        - { path: ^/admin, role: ROLE_ADMIN, host: renaissance\-terrehappy\.fr }
