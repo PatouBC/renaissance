@@ -154,7 +154,7 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('product_index');
     }
     /**
-     * @Route("/{id}", name="actu_image_delete", methods={"POST"})
+     * @Route("/{id}", name="product_image_delete", methods={"POST"})
      */
     public function deleteImg(Request $request, Product $product): Response
     {
