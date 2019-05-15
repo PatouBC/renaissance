@@ -1,34 +1,40 @@
 {{ form_start(form) }}
     <div class="justify-content-center">
-        <div>
-            <h6>Nom</h6>
-        </div>
+        <h6>
+            {{ form_label(form.name, 'Nom') }}
+        </h6>
         <div>
             {{ form_widget(form.name)}}
         </div>
-        <div>
-             <h6>Catégorie</h6>
-        </div>
+        <h6>
+            {{ form_label(form.name, 'Catégorie') }}
+         </h6>
         <div>
             {{ form(form.category)}}
         </div>
-        <div>
-            <h6>Etat émotionnel</h6>
-        </div>
+        <h6>
+            {{ form_label(form.name, 'Etat émotionnel') }}
+        </h6>
         <div>
             {{ form_widget(form.state)}}
         </div>
-        <div>
-            <h6>Effets</h6>
-        </div>
+        <h6>
+            {{ form_label(form.name, 'Effets') }}
+        </h6>
         <div>
             {{ form_widget(form.effect)}}
         </div>
-        <div>
-            <h6>Famille d'émotions</h6>
-        </div>
+        <h6>
+            {{ form_label(form.name, 'Famille d\'émotions') }}
+        </h6>
         <div>
             {{ form_widget(form.indications)}}
+        </div>
+        <h6>
+            {{ form_label(form.name, 'Image') }}
+        </h6>
+        <div>
+            {{ form(form.image)}}
         </div>
 
         {{ form_rest(form) }}
