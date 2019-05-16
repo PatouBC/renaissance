@@ -29,13 +29,7 @@
         </h6>
         <div>
             {{ form_widget(form.indications)}}
-        </div>
-        <h6>
-            {{ form_label(form.name, 'Image') }}
-        </h6>
-        <div>
-            {{ form(form.image)}}
-        </div>
+
 
         {{ form_rest(form) }}
         <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
