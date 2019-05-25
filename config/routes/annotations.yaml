@@ -1,5 +1,5 @@
 controllers:
-    host: 'renaissance-terrehappy.fr'
+    host: 'admin.renaissance-terrehappy.fr'
     resource: ../../src/Controller/
     type: annotation
 

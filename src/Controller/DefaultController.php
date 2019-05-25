@@ -6,7 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/", name="accueilClass_")
+ * @Route("/", host="admin.renaissance-terrehappy.fr",
+ *     name="accueilClass_")
  */
 class DefaultController extends AbstractController
 {
@@ -15,7 +16,9 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('default/index.html.twig', [
+            'mainNavHome' => true
+        ]);
     }
 
     /**

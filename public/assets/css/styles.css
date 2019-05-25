@@ -1,0 +1,19 @@
+.fa-edit{
+    color: blue;
+    font-size: 30px;
+}
+.fa-eye{
+    color: orangered;
+    font-size:  30px;
+}
+.fa-plus-circle{
+    color: green;
+    font-size:  30px;
+}
+.fa-trash{
+    color:  red;
+    font-size:  30px;
+}
+.nav-link{
+    color: white;
+}

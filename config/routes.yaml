@@ -1,3 +1,22 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+accueil_homepage:
+    path: /
+    defaults: {_templates: default: index.html.twig }
+
+product_homepage:
+    path: /product
+    defaults: {_templates: product: index.html.twig }
+
+category_homepage:
+    path: /category
+    defaults: {_templates: category: index.html.twig }
+
+actu_homepage:
+    path: /actu
+    defaults: {_templates: actu: index.html.twig }
+
+indication_homepage:
+    path: /indication
+    defaults: {_templates: indication: index.html.twig }

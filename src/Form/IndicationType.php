@@ -13,10 +13,6 @@ class IndicationType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('products', null, array(
-                'expanded'=> true,
-                'multiple'=> true
-            ))
         ;
     }
 

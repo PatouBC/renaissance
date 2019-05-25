@@ -3,37 +3,55 @@
 {% block title %}Actu index{% endblock %}
 
 {% block body %}
-    <h1>Actu index</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h2>Liste des actualités</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for actu in actus %}
-            <tr>
-                <td>{{ actu.id }}</td>
-                <td>{{ actu.title }}</td>
-                <td>{{ actu.description }}</td>
-                <td>{% if(actu.image) %}<img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/>{% endif %}</td>
-                <td>
-                    <a href="{{ path('actu_show', {'id': actu.id}) }}">show</a>
-                    <a href="{{ path('actu_edit', {'id': actu.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for actu in actus %}
+                        <tr>
+                            <td>{{ actu.id }}</td>
+                            <td>{{ actu.title }}</td>
+                            <td>{{ actu.description }}</td>
+                            <td>{% if(actu.image) %}<img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/>{% endif %}</td>
+                            <td>
+                               <div>
+                                   <a href="{{ path('actu_show', {'id': actu.id}) }}">
+                                       <i class="fas fa-trash"></i>
+                                   </a>
+                               </div>
+                                <div>
+                                    <a href="{{ path('actu_edit', {'id': actu.id}) }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
 
-    <a href="{{ path('actu_new') }}">Create new</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucune actualité trouvée</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="{{ path('actu_new') }}">
+                    <button class="btn btn-success"> Ajouter une actualité</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

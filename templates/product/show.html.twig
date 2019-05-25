@@ -4,10 +4,10 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-9">
-                <h1>Produit</h1>
+                <h3>Produit</h3>
 
                 <table class="table">
                     <tbody>
@@ -28,13 +28,16 @@
                         <td>{{ product.effect }}</td>
                     </tr>
                     <tr>
+                        <th>Catégorie</th>
+                        <td>{{ product.category }}</td>
+                    </tr>
+                    <tr>
                         <th>Indication</th>
                         <td>
                             {% for indication in product.indications %}
                                 <div>{{ indication }}</div>
                             {% endfor %}
                         </td>
-
                     </tr>
                     </tbody>
                 </table>

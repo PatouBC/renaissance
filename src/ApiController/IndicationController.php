@@ -93,7 +93,7 @@ class IndicationController extends AbstractFOSRestController
     public function patch(Request $request, Indication $indication)
     {
         if($indication){
-            $form = $this->createForm(Indication::class, $indication);
+            $form = $this->createForm(IndicationType::class, $indication);
             $form->submit($request->request->all(), false);
             $em = $this->getDoctrine()->getManager();
             $em->persist($indication);

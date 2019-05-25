@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Typeconsult{% endblock %}
+
+{% block body %}
+    <h1>Edit Typeconsult</h1>
+
+    {{ include('typeconsult/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('typeconsult_index') }}">back to list</a>
+
+    {{ include('typeconsult/_delete_form.html.twig') }}
+{% endblock %}

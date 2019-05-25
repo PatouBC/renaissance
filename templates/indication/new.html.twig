@@ -3,9 +3,17 @@
 {% block title %}New Indication{% endblock %}
 
 {% block body %}
-    <h1>Create new Indication</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Créer une nouvelle indication</h3>
 
-    {{ include('indication/_form.html.twig') }}
+                {{ include('indication/_form.html.twig') }}
 
-    <a href="{{ path('indication_index') }}">back to list</a>
+                <a href="{{ path('indication_index') }}">
+                    <button class="btn btn-secondary">Retour à la liste des indications</button>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

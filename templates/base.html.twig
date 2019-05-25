@@ -8,10 +8,46 @@
                   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
                   crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" >
+            <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" >
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block nav %}
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #707070;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item {% if mainNavHome is defined %}active {% endif %}">
+                            <a class="nav-link" href="{{ path('accueil_homepage') }}">Accueil <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item {% if mainNavProduct is defined %}active {% endif %}">
+                            <a class="nav-link" href="{{ path('product_homepage') }}">Produits</a>
+                        </li>
+                        <li class="nav-item {% if mainNavCategory is defined %}active {% endif %}">
+                            <a class="nav-link" href="{{ path('category_homepage') }}">Catégories</a>
+                        </li>
+                        <li class="nav-item {% if mainNavActu is defined %}active {% endif %}">
+                            <a class="nav-link" href="{{ path('actu_homepage') }}">Actualités</a>
+                        </li>
+                        <li class="nav-item {% if mainNavIndication is defined %}active {% endif %}">
+                            <a class="nav-link" href="{{ path('indication_homepage') }}">Indications</a>
+                        </li>
+                        <li class="nav-item ">
+                            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                    <a class="nav-link" href="{{ path("fos_user_security_logout") }}">Déconnexion</a>
+                            {% else %}
+                                    <a class="nav-link" href="{{ path("fos_user_security_login") }}">Connexion</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        {% endblock %}
+        {% block body %}
+
+        {% endblock %}
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/js/form.js') }}"></script>
         {% block javascripts %}

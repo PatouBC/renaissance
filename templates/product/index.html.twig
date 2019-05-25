@@ -5,18 +5,17 @@
 {% block body %}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-9">
-                <h1>Liste des produits</h1>
-
+            <div class="col">
+                <h3>Liste des produits</h3>
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Catégorie</th>
-                        <th>Image</th>
                         <th>Nom</th>
+                        <th>Image</th>
                         <th>Etat émotionnel</th>
                         <th>Effets</th>
+                        <th>Catégorie</th>
                         <th>Indication</th>
                         <th>Actions</th>
                     </tr>
@@ -25,11 +24,15 @@
                     {% for product in products %}
                         <tr>
                             <td>{{ product.id }}</td>
-                            <td>{{ product.category.title }}</td>
-                            <td>{% if(product.image) %}<img src="{{ asset(product.image.imgpath) }}" width="150px" alt="{{ product.image.alt }}"/>{% endif %}</td>
                             <td>{{ product.name }}</td>
+                            <td>
+                                {% if(product.image) %}
+                                    <img src="{{ asset(product.image.imgpath) }}" width="150px" alt="{{ product.image.alt }}"/>
+                                {% endif %}
+                            </td>
                             <td>{{ product.state }}</td>
                             <td>{{ product.effect }}</td>
+                            <td>{{ product.category.title }}</td>
                             <td>
                                 {% for indication in product.indications %}
                                     <div>{{ indication }}</div>

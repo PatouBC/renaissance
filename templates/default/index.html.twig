@@ -4,28 +4,27 @@
 
 {% endblock %}
 
+
 {% block body %}
+
     <div class="container">
         <div id="Welcome">
-            <h1>Bienvenu</h1>
+            <h2>Bienvenu</h2>
+
             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                 <h3>Vous êtes connecté {{ app.user.username }} {% if is_granted("ROLE_ADMIN") %} (admin) {% endif %}</h3>
-                <h6>
-                    <a href="{{ path("fos_user_security_logout") }}">Déconnexion</a>
-                </h6>
+
             {% else %}
-                <h6>
-                    <a href="{{ path("fos_user_security_login") }}">Connexion</a>
-                </h6>
+                <h5>
+                    Veuillez vous connecter
+                </h5>
             {% endif %}
         </div>
     </div>
 
 {% endblock %}
 
-{% block stylesheets %}
 
-{% endblock %}
 
 {% block javacripts %}
 

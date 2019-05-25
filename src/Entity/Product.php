@@ -33,10 +33,6 @@ class Product
      */
     private $effect;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Indication", inversedBy="products")
-     */
-    private $indications;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
@@ -50,10 +46,17 @@ class Product
      */
     private $image;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Indication")
+     */
+    private $indications;
+
     public function __construct()
     {
         $this->indications = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -96,31 +99,6 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection|Indication[]
-     */
-    public function getIndications(): Collection
-    {
-        return $this->indications;
-    }
-
-    public function addIndication(Indication $indication): self
-    {
-        if (!$this->indications->contains($indication)) {
-            $this->indications[] = $indication;
-        }
-
-        return $this;
-    }
-
-    public function removeIndication(Indication $indication): self
-    {
-        if ($this->indications->contains($indication)) {
-            $this->indications->removeElement($indication);
-        }
-
-        return $this;
-    }
     public function __toString()
     {
         return $this->getName();
@@ -149,4 +127,34 @@ class Product
 
         return $this;
     }
+
+    /**
+     * @return Collection|Indication[]
+     */
+    public function getIndications(): Collection
+    {
+        return $this->indications;
+    }
+
+    public function addIndication(Indication $indication): self
+    {
+        if (!$this->indications->contains($indication)) {
+            $this->indications[] = $indication;
+        }
+
+        return $this;
+    }
+
+    public function removeIndication(Indication $indication): self
+    {
+        if ($this->indications->contains($indication)) {
+            $this->indications->removeElement($indication);
+        }
+
+        return $this;
+    }
+
+
+
+
 }

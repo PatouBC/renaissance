@@ -3,24 +3,38 @@
 {% block title %}Indication{% endblock %}
 
 {% block body %}
-    <h1>Indication</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <h3>Liste des indications</h3>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ indication.id }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ indication.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ indication.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ indication.description }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="{{ path('indication_index') }}">
+                        <button class="btn btn-secondary">Retour à la liste des indications</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ path('indication_edit', {'id': indication.id}) }}">
+                        <button class="btn btn-success">Modifier</button>
+                    </a>
+                </div>
 
-    <a href="{{ path('indication_index') }}">back to list</a>
 
-    <a href="{{ path('indication_edit', {'id': indication.id}) }}">edit</a>
 
-    {{ include('indication/_delete_form.html.twig') }}
+                {{ include('indication/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

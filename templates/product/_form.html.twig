@@ -24,14 +24,13 @@
         <div>
             {{ form_widget(form.effect)}}
         </div>
-        <h6>
-            {{ form_label(form.name, 'Famille d\'émotions') }}
-        </h6>
-        <div>
-            {{ form_widget(form.indications)}}
+
 
 
         {{ form_rest(form) }}
-        <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        <div>
+            <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+
     </div>
 {{ form_end(form) }}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Rendezvous{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Modifier un rendezvous</h3>
+
+                {{ include('rendezvous/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+                <a href="{{ path('rendezvous_index') }}">
+                    <button class="btn btn-secondary">Retour à la liste des rendez-vous</button>
+                </a>
+
+                {{ include('rendezvous/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

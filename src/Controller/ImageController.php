@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/image", host="renaissance-terrehappy.fr")
+ * @Route("/image", host="admin.renaissance-terrehappy.fr")
  */
 class ImageController extends AbstractController
 {

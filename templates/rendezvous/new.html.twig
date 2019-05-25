@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Rendezvous{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+   <div class="row justify-content-center" >
+       <div class="col-9">
+           <h3>Créer un nouveau rendez-vous</h3>
+
+           {{ include('rendezvous/_form.html.twig') }}
+
+           <a href="{{ path('rendezvous_index') }}">
+               <button class="btn btn-secondary">Retour à la liste des rendez-vous</button>
+           </a>
+       </div>
+   </div>
+</div>
+
+{% endblock %}

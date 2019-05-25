@@ -3,9 +3,18 @@
 {% block title %}New Category{% endblock %}
 
 {% block body %}
-    <h1>Create new Category</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Créer une nouvelle catégorie</h3>
 
-    {{ include('category/_form.html.twig') }}
+                {{ include('category/_form.html.twig') }}
 
-    <a href="{{ path('category_index') }}">back to list</a>
+                <a href="{{ path('category_index') }}">
+                    <button class="btn btn-secondary">Retour à la liste des catégories</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

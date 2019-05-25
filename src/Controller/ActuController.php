@@ -24,6 +24,7 @@ class ActuController extends AbstractController
     {
         return $this->render('actu/index.html.twig', [
             'actus' => $actuRepository->findAll(),
+            'mainNavActu' => true
         ]);
     }
 

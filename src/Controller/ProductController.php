@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/product", host="renaissance-terrehappy.fr")
+ * @Route("/product", host="admin.renaissance-terrehappy.fr")
  */
 class ProductController extends AbstractController
 {
@@ -25,6 +25,7 @@ class ProductController extends AbstractController
     {
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findAll(),
+            'mainNavProduct' => true,
         ]);
     }
 

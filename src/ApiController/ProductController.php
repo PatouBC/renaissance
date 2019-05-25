@@ -24,9 +24,15 @@ class ProductController extends AbstractFOSRestController
      *     name="productlist_api")
      * @Rest\View()
      */
-    public function index(ProductRepository $productRepository): View
+    public function index(Request $request,ProductRepository $productRepository): View
     {
-        $products=$productRepository->findAll();
+        $categoryId = $request->get('category');
+        if (!empty($categoryId)) {
+            $products=$productRepository->findBy(array("category"=>$categoryId));
+        }else{
+            $products=$productRepository->findAll();
+        }
+
         return View::create($products, Response::HTTP_OK);
     }
 
