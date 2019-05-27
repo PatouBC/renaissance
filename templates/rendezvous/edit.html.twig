@@ -3,19 +3,11 @@
 {% block title %}Edit Rendezvous{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <h3>Modifier un rendezvous</h3>
+    <h1>Edit Rendezvous</h1>
 
-                {{ include('rendezvous/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    {{ include('rendezvous/_form.html.twig', {'button_label': 'Update'}) }}
 
-                <a href="{{ path('rendezvous_index') }}">
-                    <button class="btn btn-secondary">Retour à la liste des rendez-vous</button>
-                </a>
+    <a href="{{ path('rendezvous_index') }}">back to list</a>
 
-                {{ include('rendezvous/_delete_form.html.twig') }}
-            </div>
-        </div>
-    </div>
+    {{ include('rendezvous/_delete_form.html.twig') }}
 {% endblock %}

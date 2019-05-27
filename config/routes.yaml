@@ -20,3 +20,15 @@ actu_homepage:
 indication_homepage:
     path: /indication
     defaults: {_templates: indication: index.html.twig }
+
+rendezvous_homepage:
+    path: /rendezvous
+    defaults: {_templates: rendezvous: index.html.twig }
+
+timeslot_homepage:
+    path: /timeslot
+    defaults: {_templates: timeslot: index.html.twig }
+
+typeconsult_homepage:
+    path: /typeconsult
+    defaults: {_templates: typeconsult: index.html.twig }

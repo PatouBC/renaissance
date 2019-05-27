@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}Modifier une catégorie{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-9">
-                <h3>Modifier un produit</h3>
+                <h3>Modifier une catégorie</h3>
 
-                {{ include('category/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+                {{ include('category/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
                 <a href="{{ path('category_index') }}">
-                    <button class="btn btn-secondary">Retour à la liste des produits</button>
+                    <button class="btn btn-secondary">Retour à la liste des catégories</button>
                 </a>
 
                 {{ include('category/_delete_form.html.twig') }}

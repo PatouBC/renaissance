@@ -17,3 +17,6 @@
 .nav-link{
     color: white;
 }
+.dropdown-item.active{
+    background-color: #707070;
+}

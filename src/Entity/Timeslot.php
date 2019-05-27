@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TypeconsultRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TimeslotRepository")
  */
-class Typeconsult
+class Timeslot
 {
     /**
      * @ORM\Id()
@@ -20,11 +20,6 @@ class Typeconsult
      * @ORM\Column(type="string", length=255)
      */
     private $description;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $rate;
 
     public function getId(): ?int
     {
@@ -42,16 +37,8 @@ class Typeconsult
 
         return $this;
     }
-
-    public function getRate(): ?int
+    public function __toString()
     {
-        return $this->rate;
-    }
-
-    public function setRate(int $rate): self
-    {
-        $this->rate = $rate;
-
-        return $this;
+        return $this.$this->getDescription();
     }
 }

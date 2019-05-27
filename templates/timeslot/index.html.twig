@@ -1,38 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des catégories{% endblock %}
+{% block title %}Liste des créneaux{% endblock %}
 
 {% block body %}
+
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-9">
-                <h3>Liste des catégories de produits</h3>
+                <h3>Liste des créneaux horaires</h3>
+
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Titre</th>
-                        <th>Image</th>
                         <th>Description</th>
-                        <th>Actions</th>
+                        <th>actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for category in categories %}
+                    {% for timeslot in timeslots %}
                         <tr>
-                            <td>{{ category.id }}</td>
-                            <td>{{ category.title }}</td>
-                            <td>{% if(category.image) %}<img src="{{ asset(category.image.imgpath) }}" width="150px"
-                                                             alt="{{ category.image.alt }}"/>{% endif %}</td>
-                            <td>{{ category.description }}</td>
+                            <td>{{ timeslot.id }}</td>
+                            <td>{{ timeslot.description }}</td>
                             <td>
                                 <div>
-                                    <a href="{{ path('category_show', {'id': category.id}) }}">
+                                    <a href="{{ path('timeslot_show', {'id': timeslot.id}) }}">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="{{ path('category_edit', {'id': category.id}) }}">
+                                    <a href="{{ path('timeslot_edit', {'id': timeslot.id}) }}">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </div>
@@ -40,13 +37,14 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="4">Aucune catégorie trouvée</td>
+                            <td colspan="3">Aucun créneau trouvé</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
-                <a href="{{ path('category_new') }}">
-                    <button class="btn btn-success"> Créer une catégorie</button>
+
+                <a href="{{ path('timeslot_new') }}">
+                    <button class="btn btn-success">Ajouter un créneau</button>
                 </a>
             </div>
         </div>

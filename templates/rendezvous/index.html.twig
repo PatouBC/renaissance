@@ -1,59 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Rendezvous index{% endblock %}
+{% block title %}Liste des rendez-vous{% endblock %}
 
 {% block body %}
-
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <h3>Liste des rendez-vous</h3>
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Date</th>
-                    <th>Tranche horaire</th>
-                    <th>Type de consultation</th>
-                    <th>Confirmation</th>
-                    <th>actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for rendezvous in rendezvouses %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Liste des rendez-vous</h3>
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>{{ rendezvous.id }}</td>
-                        <td>{{ rendezvous.date ? rendezvous.date|date('d-m-Y') : '' }}</td>
-                        <td>{{ rendezvous.timeslot }}</td>
-                        <td>{{ rendezvous.typeconsult.description }}</td>
-                        <td>{{ rendezvous.confirm ? 'Oui' : 'Non' }}</td>
-                        <td>
-                            <div>
-                                <a href="{{ path('rendezvous_show', {'id': rendezvous.id}) }}">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{{ path('rendezvous_edit', {'id': rendezvous.id}) }}">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </div>
-                        </td>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Créneau horaire</th>
+                        <th>Type de consultation</th>
+                        <th>Disponibilité</th>
+                        <th>Confirmation</th>
+                        <th>actions</th>
                     </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="5">Aucun rendez-vous trouvé</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-            <a href="{{ path('rendezvous_new') }}">
-                <button class="btn btn-success"> Créer un nouveau rendez-vous</button>
-            </a>
+                    </thead>
+                    <tbody>
+                    {% for rendezvous in rendezvouses %}
+                        <tr>
+                            <td>{{ rendezvous.id }}</td>
+                            <td>{{ rendezvous.date ? rendezvous.date|date('d-m-Y') : '' }}</td>
+                            <td>{{ rendezvous.timeslot.description }}</td>
+                            <td>{{ rendezvous.typeconsult.description }}</td>
+                            <td>{{ rendezvous.availability ? 'Oui' : 'Non' }}</td>
+                            <td>{{ rendezvous.confirm ? 'Oui' : 'Non' }}</td>
+                            <td>
+                                <div>
+                                    <a href="{{ path('rendezvous_show', {'id': rendezvous.id}) }}">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('rendezvous_edit', {'id': rendezvous.id}) }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">Aucun rendez-vous enregistré</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('rendezvous_new') }}">
+                    <button class="btn btn-success"> Créer un rendez-vous</button>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

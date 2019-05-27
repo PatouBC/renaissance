@@ -3,49 +3,32 @@
 {% block title %}Rendezvous{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-9">
-                <h3>Rendez_vous</h3>
+    <h1>Rendezvous</h1>
 
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ rendezvous.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Date</th>
-                        <td>{{ rendezvous.date ? rendezvous.date|date('d-m-Y') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Tranche horaire</th>
-                        <td>{{ rendezvous.timeslot }}</td>
-                    </tr>
-                    <tr>
-                        <th>Type de consultation</th>
-                        <td>{{ rendezvous.typeconsult }}</td>
-                    </tr>
-                    <tr>
-                        <th>Confirm</th>
-                        <td>{{ rendezvous.confirm ? 'Oui' : 'Non' }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <a href="{{ path('rendezvous_index') }}">
-                        <button class="btn btn-secondary">Retour à la liste des rendez-vous</button>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ path('rendezvous_edit', {'id': rendezvous.id}) }}">
-                        <button class="btn btn-success">Modifier</button>
-                    </a>
-                </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rendezvous.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ rendezvous.date ? rendezvous.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Confirm</th>
+                <td>{{ rendezvous.confirm ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Availability</th>
+                <td>{{ rendezvous.availability ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-                {{ include('rendezvous/_delete_form.html.twig') }}
-            </div>
-        </div>
-    </div>
+    <a href="{{ path('rendezvous_index') }}">back to list</a>
 
+    <a href="{{ path('rendezvous_edit', {'id': rendezvous.id}) }}">edit</a>
+
+    {{ include('rendezvous/_delete_form.html.twig') }}
 {% endblock %}

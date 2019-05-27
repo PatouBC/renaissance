@@ -21,6 +21,7 @@ class IndicationController extends AbstractController
     public function index(IndicationRepository $indicationRepository): Response
     {
         return $this->render('indication/index.html.twig', [
+            'mainNavIndication'=> true,
             'indications' => $indicationRepository->findAll(),
         ]);
     }

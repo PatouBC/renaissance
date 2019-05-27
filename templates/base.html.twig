@@ -22,17 +22,29 @@
                         <li class="nav-item {% if mainNavHome is defined %}active {% endif %}">
                             <a class="nav-link" href="{{ path('accueil_homepage') }}">Accueil <span class="sr-only">(current)</span></a>
                         </li>
+                        <li class="nav-item {% if mainNavActu is defined %}active {% endif %}">
+                            <a class="nav-link" href="{{ path('actu_homepage') }}">Actualités</a>
+                        </li>
                         <li class="nav-item {% if mainNavProduct is defined %}active {% endif %}">
                             <a class="nav-link" href="{{ path('product_homepage') }}">Produits</a>
                         </li>
                         <li class="nav-item {% if mainNavCategory is defined %}active {% endif %}">
                             <a class="nav-link" href="{{ path('category_homepage') }}">Catégories</a>
                         </li>
-                        <li class="nav-item {% if mainNavActu is defined %}active {% endif %}">
-                            <a class="nav-link" href="{{ path('actu_homepage') }}">Actualités</a>
-                        </li>
                         <li class="nav-item {% if mainNavIndication is defined %}active {% endif %}">
                             <a class="nav-link" href="{{ path('indication_homepage') }}">Indications</a>
+                        </li>
+                        <li class="nav-item dropdown {% if mainNavConsult is defined %}active {% endif %}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Consultations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item {% if mainNavRdv is defined %}active {% endif %}" href="{{ path('rendezvous_homepage') }}">Rendez-vous</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item {% if mainNavTime is defined %}active {% endif %}" href="{{ path('timeslot_homepage') }}">Créneaux horaires</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item {% if mainNavType is defined %}active {% endif %}" href="{{ path('typeconsult_homepage') }}">Type de consultations</a>
+                            </div>
                         </li>
                         <li class="nav-item ">
                             {% if is_granted("IS_AUTHENTICATED_FULLY") %}

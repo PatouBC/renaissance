@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Rendezvous;
+use App\Entity\Timeslot;
 use App\Entity\Typeconsult;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -15,8 +16,14 @@ class RendezvousType extends AbstractType
     {
         $builder
             ->add('date')
-            ->add('timeslot')
             ->add('confirm')
+            ->add('availability')
+            ->add('timeslot', EntityType::class, array(
+                'class' => Timeslot::class,
+                'choice_label' => function($timeslot){
+                    return $timeslot->getDescription();
+                }
+            ))
             ->add('typeconsult', EntityType::class, array(
                 'class' => Typeconsult::class,
                 'choice_label' => function($typeconsult){

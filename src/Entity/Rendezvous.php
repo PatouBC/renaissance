@@ -22,18 +22,22 @@ class Rendezvous
     private $date;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $timeslot;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $confirm;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $availability;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Timeslot")
+     */
+    private $timeslot;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Typeconsult")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $typeconsult;
 
@@ -54,18 +58,6 @@ class Rendezvous
         return $this;
     }
 
-    public function getTimeslot(): ?int
-    {
-        return $this->timeslot;
-    }
-
-    public function setTimeslot(int $timeslot): self
-    {
-        $this->timeslot = $timeslot;
-
-        return $this;
-    }
-
     public function getConfirm(): ?bool
     {
         return $this->confirm;
@@ -74,6 +66,30 @@ class Rendezvous
     public function setConfirm(bool $confirm): self
     {
         $this->confirm = $confirm;
+
+        return $this;
+    }
+
+    public function getAvailability(): ?bool
+    {
+        return $this->availability;
+    }
+
+    public function setAvailability(bool $availability): self
+    {
+        $this->availability = $availability;
+
+        return $this;
+    }
+
+    public function getTimeslot(): ?Timeslot
+    {
+        return $this->timeslot;
+    }
+
+    public function setTimeslot(?Timeslot $timeslot): self
+    {
+        $this->timeslot = $timeslot;
 
         return $this;
     }
