@@ -46,6 +46,9 @@
                                 <a class="dropdown-item {% if mainNavType is defined %}active {% endif %}" href="{{ path('typeconsult_homepage') }}">Type de consultations</a>
                             </div>
                         </li>
+                        <li class="nav-item {% if mainNavUser is defined %}active {% endif %}">
+                            <a class="nav-link" href="{{ path('user_homepage') }}">Utilisateurs</a>
+                        </li>
                         <li class="nav-item ">
                             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                                     <a class="nav-link" href="{{ path("fos_user_security_logout") }}">Déconnexion</a>

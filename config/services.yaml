@@ -49,3 +49,11 @@ services:
     form.type.model.subcategoryType:
         class: App\Form\SubcategoryType
         arguments: ["@doctrine.orm.entity_manager"]
+
+    app.form.registration:
+        class: App\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+
+

@@ -32,3 +32,7 @@ timeslot_homepage:
 typeconsult_homepage:
     path: /typeconsult
     defaults: {_templates: typeconsult: index.html.twig }
+
+user_homepage:
+    path: /user
+    defaults: {_templates: user: index.html.twig }

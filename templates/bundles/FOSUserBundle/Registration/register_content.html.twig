@@ -1,8 +1,38 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-    </div>
+  <div class="container-fluid">
+      <div class="row justify-content-center">
+          <div col -6>
+              <h6>
+                  {{ form_label(form.name, 'Nom') }}
+              </h6>
+              <div>
+                  {{ form_widget(form.name) }}
+              </div>
+              <h6>
+                  {{ form_label(form.surname, 'Prénom') }}
+              </h6>
+              <div>
+                  {{ form_widget(form.surname) }}
+              </div>
+              <h6>
+                  {{ form_label(form.username, 'Identifiant') }}
+              </h6>
+              <div>
+                  {{ form_widget(form.username) }}
+              </div>
+              <h6>
+                  {{ form_label(form.phone, 'Numéro de téléphone') }}
+              </h6>
+              <div>
+                  {{ form_widget(form.phone) }}
+              </div>
+              <h6>
+                  {{ form_widget(form) }}
+              </h6>
+              <input type="submit" value="{{ 'registration.submit'|trans }}" />
+          </div>
+      </div>
+  </div>
 {{ form_end(form) }}

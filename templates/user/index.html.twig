@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs {% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Liste des utilisateurs</h3>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Identifiant</th>
+                        <th>E-mail</th>
+                        <th>Téléphone</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.surname }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.phone }}</td>
+                            <td>
+                                <div>
+                                    <a href="">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                               <div>
+                                   <a href="">
+                                       <i class="fas fa-edit"></i>
+                                   </a>
+                               </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucun utilisateur trouvé</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="">
+                    <button class="btn btn-success">Ajouter un utilisateur</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
