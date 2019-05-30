@@ -24,10 +24,8 @@ class RegistrationType extends AbstractType
                 ))
                 ->add('surname', null, array(
                     'label' => 'Prénom'
-                ))
-                ->add('phone', null, array(
-                    'label' => 'Numéro de téléphone'
                 ));
+
     }
 
     public function getParent()
@@ -38,5 +36,9 @@ class RegistrationType extends AbstractType
     public function getBlockPrefix()
     {
         return 'app_user_registration';
+    }
+    public function getName()
+    {
+        return $this->getBlockPrefix();
     }
 }

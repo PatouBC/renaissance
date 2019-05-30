@@ -31,11 +31,6 @@ class User extends BaseUser
      */
     protected $surname;
 
-    /**
-     * @ORM\Column(type="integer", length=255)
-     *
-     */
-    protected $phone;
 
     public function __construct()
     {
@@ -47,18 +42,28 @@ class User extends BaseUser
         return $this->id;
     }
 
-    public function getName(): ?string
+    /**
+     * Get Name
+     *
+     * @return string
+     */
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName( $name)
     {
         $this->name = $name;
 
         return $this;
     }
 
+    /**
+     * Get Surname
+     *
+     * @return string
+     */
     public function getSurname(): ?string
     {
         return $this->surname;
@@ -71,15 +76,4 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getPhone(): ?int
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(int $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
 }

@@ -1,3 +1,9 @@
+to_ng:
+    path: /
+    host: 'renaissance-terrehappy.fr'
+    defaults:
+        url: 'http://renaissance-terrehappy.fr'
+
 controllers:
     host: 'admin.renaissance-terrehappy.fr'
     resource: ../../src/Controller/

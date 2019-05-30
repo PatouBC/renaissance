@@ -24,6 +24,13 @@ security:
                 check_path: /login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        auth_register:
+            host: api\.renaissance-terrehappy\.fr
+            pattern: ^/auth/register
+            stateless: true
+            anonymous: true
+            provider: fos_userbundle
         api:
             host: api\.renaissance-terrehappy\.fr
             pattern: ^/
@@ -35,6 +42,8 @@ security:
                     - lexik_jwt_authentication.jwt_token_authenticator
 
         main:
+            host: admin\.renaissance-terrehappy\.fr
+            access_denied_handler: App\Security\AccessDeniedHandler
             pattern: ^/
             form_login:
                 provider: fos_userbundle
@@ -43,9 +52,8 @@ security:
             anonymous:  true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-#       - { path: ^/actu, role: ROLE_USER, host: api\.renaissance-terrehappy\.fr}
- #       - { path: ^/actu, role: ROLE_USER, host: renaissance-terrehappy\.fr}
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin\.renaissance-terrehappy\.fr}
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin\.renaissance-terrehappy\.fr }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin\.renaissance-terrehappy\.fr }
+        - { path: ^/redirectionTo, role: IS_AUTHENTICATED_FULLY, host: admin\.renaissance-terrehappy\.fr }
         - { path: ^/, role: ROLE_ADMIN, host: admin\.renaissance-terrehappy\.fr }
