@@ -16,7 +16,7 @@
                         <th>Prénom</th>
                         <th>Identifiant</th>
                         <th>E-mail</th>
-                        <th>Téléphone</th>
+                        <th>Statut</th>
                         <th>actions</th>
                     </tr>
                     </thead>
@@ -28,15 +28,10 @@
                             <td>{{ user.surname }}</td>
                             <td>{{ user.username }}</td>
                             <td>{{ user.email }}</td>
-                            <td>{{ user.phone }}</td>
+                            <td>{{ user.enabled }}</td>
                             <td>
-                                <div>
-                                    <a href="">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </div>
                                <div>
-                                   <a href="">
+                                   <a href="{{ path('user_edit', {'id': user.id}) }}">
                                        <i class="fas fa-edit"></i>
                                    </a>
                                </div>

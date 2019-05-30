@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier un type de consultation{% endblock %}
+{% block title %}Modifier un Utilisateur{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-9">
-    <h3>Modifier un type de consultation</h3>
+    <h3>Modifier un Utilisateur</h3>
 
-    {{ include('typeconsult/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('typeconsult_index') }}">
-        <button class="btn btn-secondary">Retour à la liste des créneaux</button>
+    <a href="{{ path('user_index') }}">
+        <button class="btn btn-secondary">Retour à la liste des utilisateurs</button>
     </a>
 
-    {{ include('typeconsult/_delete_form.html.twig') }}
+
         </div>
     </div>
 </div>
