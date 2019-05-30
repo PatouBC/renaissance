@@ -41,6 +41,11 @@ class Timeslot
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Typeconsult")
+     */
+    private $typeconsult;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,5 +114,17 @@ class Timeslot
     public function __toString()
     {
         return $this->getDescription();
+    }
+
+    public function getTypeconsult(): ?Typeconsult
+    {
+        return $this->typeconsult;
+    }
+
+    public function setTypeconsult(?Typeconsult $typeconsult): self
+    {
+        $this->typeconsult = $typeconsult;
+
+        return $this;
     }
 }

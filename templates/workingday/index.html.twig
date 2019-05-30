@@ -30,9 +30,14 @@
                                     <div>{{ timeslot.description }}</div>
                                 {% endfor %}
                             </td>
+
                             <td>
                                 {% for timeslot in workingday.timeslots %}
-                                    <div>{{ timeslot.dispo }}</div>
+                                    {% if(timeslot.dispo) %}
+                                    <div>disponible</div>
+                                    {% else %}
+                                    <div>indisponible</div>
+                                    {% endif %}
                                 {% endfor %}
                             </td>
                             <td>

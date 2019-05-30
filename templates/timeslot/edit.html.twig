@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Timeslot{% endblock %}
+{% block title %}Modifier un créneau{% endblock %}
 
 {% block body %}
-    <h1>Edit Timeslot</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Modifier un créneau</h3>
 
-    {{ include('timeslot/_form.html.twig', {'button_label': 'Update'}) }}
+                {{ include('timeslot/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('timeslot_index') }}">back to list</a>
+                <a href="{{ path('timeslot_index') }}">
+                    <button class="btn btn-secondary">Retour vers la liste des créneaux</button>
+                </a>
 
-    {{ include('timeslot/_delete_form.html.twig') }}
+                {{ include('timeslot/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
