@@ -1,38 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créneau horaire{% endblock %}
+{% block title %}Timeslot{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-9">
+    <h1>Timeslot</h1>
 
-                <h3>Créneau horaire</h3>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ timeslot.id }}</td>
+            </tr>
+            <tr>
+                <th>Slot</th>
+                <td>{{ timeslot.slot }}</td>
+            </tr>
+            <tr>
+                <th>Dispo</th>
+                <td>{{ timeslot.dispo ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Wait</th>
+                <td>{{ timeslot.wait ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Confirm</th>
+                <td>{{ timeslot.confirm ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ timeslot.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        <td>{{ timeslot.description }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <a href="{{ path('timeslot_index') }}">
-                        <button class="btn btn-secondary">Retour à la liste des créneaux</button>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ path('timeslot_edit', {'id': timeslot.id}) }}">
-                        <button class="btn btn-success">Modifier</button>
-                    </a>
-                </div>
-                {{ include('timeslot/_delete_form.html.twig') }}
-            </div>
-        </div>
-    </div>
+    <a href="{{ path('timeslot_index') }}">back to list</a>
+
+    <a href="{{ path('timeslot_edit', {'id': timeslot.id}) }}">edit</a>
+
+    {{ include('timeslot/_delete_form.html.twig') }}
 {% endblock %}

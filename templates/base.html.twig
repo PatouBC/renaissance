@@ -39,7 +39,7 @@
                                 Consultations
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item {% if mainNavRdv is defined %}active {% endif %}" href="{{ path('rendezvous_homepage') }}">Rendez-vous</a>
+                                <a class="dropdown-item {% if mainNavDispo is defined %}active {% endif %}" href="{{ path('workingday_homepage') }}">Disponibilités</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item {% if mainNavTime is defined %}active {% endif %}" href="{{ path('timeslot_homepage') }}">Créneaux horaires</a>
                                 <div class="dropdown-divider"></div>

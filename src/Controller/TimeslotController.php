@@ -21,7 +21,6 @@ class TimeslotController extends AbstractController
     public function index(TimeslotRepository $timeslotRepository): Response
     {
         return $this->render('timeslot/index.html.twig', [
-            'mainNavConsult' => true,
             'mainNavTime' => true,
             'timeslots' => $timeslotRepository->findAll(),
         ]);

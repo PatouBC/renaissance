@@ -21,9 +21,9 @@ indication_homepage:
     path: /indication
     defaults: {_templates: indication: index.html.twig }
 
-rendezvous_homepage:
-    path: /rendezvous
-    defaults: {_templates: rendezvous: index.html.twig }
+workingday_homepage:
+    path: /workingday
+    defaults: {_templates: workingday: index.html.twig }
 
 timeslot_homepage:
     path: /timeslot

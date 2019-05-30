@@ -3,27 +3,30 @@
 namespace App\Form;
 
 use App\Entity\Timeslot;
+use App\Entity\Workingday;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TimeslotType extends AbstractType
+class WorkingdayType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('slot')
-            ->add('description')
-            ->add('dispo')
-            ->add('wait')
-            ->add('confirm')
+            ->add('date')
+            ->add('timeslots', EntityType::class, array(
+                'class'=> Timeslot::class,
+                'expanded'=>true,
+                'multiple'=> true
+            ))
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Timeslot::class,
+            'data_class' => Workingday::class,
         ]);
     }
 }
