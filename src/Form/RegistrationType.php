@@ -25,7 +25,6 @@ class RegistrationType extends AbstractType
                 ->add('surname', null, array(
                     'label' => 'Prénom'
                 ));
-
     }
 
     public function getParent()

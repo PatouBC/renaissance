@@ -1,22 +1,28 @@
 .fa-edit{
     color: blue;
-    font-size: 30px;
+    font-size: 25px;
 }
 .fa-eye{
     color: orangered;
-    font-size:  30px;
+    font-size:  25px;
 }
 .fa-plus-circle{
     color: green;
-    font-size:  30px;
+    font-size:  25px;
 }
 .fa-trash{
     color:  red;
-    font-size:  30px;
+    font-size:  25px;
 }
 .nav-link{
     color: white;
 }
 .dropdown-item.active{
     background-color: #707070;
+}
+.fa-user-alt-slash{
+    color: #bdbdbd;
+}
+.fa-user-alt{
+    color: #0cc336;
 }

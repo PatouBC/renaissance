@@ -34,7 +34,6 @@ class PasswordResettingListener implements EventSubscriberInterface
 
     public function onPasswordResettingSuccess(FormEvent $event)
     {
-
         $event->setResponse(new RedirectResponse($this->router->generate('redirectTo')));
     }
 }
