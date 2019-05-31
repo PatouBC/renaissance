@@ -36,9 +36,13 @@
                             </td>
                             <td>
                                <div>
-                                   <a href="{{ path('user_edit', {'id': user.id}) }}">
-                                       <i class="fas fa-edit"></i>
-                                   </a>
+                                   {% if ( user.username == app.user.username ) %}
+                                   <i class="fas fa-lock"></i>
+                                   {% else %}
+                                    <a href="{{ path('user_edit', {'id': user.id}) }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                   {% endif %}
                                </div>
                             </td>
                         </tr>

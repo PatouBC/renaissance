@@ -3,7 +3,18 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+    {% block nav %}
+    {% endblock %}
 <p>
 {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
 </p>
+    <a href={% if is_granted("ROLE_ADMIN") %}
+            {{ "http://admin.renaissance-terrehappy.fr" }}
+            {% else %}
+            {{ "http://renaissance-terrehappy.fr" }}
+            {% endif %}>
+        <button class="btn btn-secondary">
+            {{ 'registration.back'|trans }}
+        </button>
+    </a>
 {% endblock %}

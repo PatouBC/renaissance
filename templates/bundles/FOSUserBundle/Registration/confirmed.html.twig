@@ -3,8 +3,22 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% block nav %}
+    {% endblock %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                {% if targetUrl %}
+                <p>
+                    <a href="http://renaissance-terrehappy.fr">
+                        <button class="btn btn-secondary">
+                            {{ 'registration.back'|trans }}
+                        </button>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
     {% endif %}
 {% endblock fos_user_content %}

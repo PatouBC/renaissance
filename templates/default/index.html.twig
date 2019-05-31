@@ -9,7 +9,7 @@
 
     <div class="container">
         <div id="Welcome">
-            <h2>Bienvenu</h2>
+            <h2>Bienvenue</h2>
 
             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                 <h3>Vous êtes connecté {{ app.user.username }} {% if is_granted("ROLE_ADMIN") %} (admin) {% endif %}</h3>
