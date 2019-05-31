@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,14 +22,10 @@ class Workingday
     private $date;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Timeslot")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Timeslot", inversedBy="workingdays")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $timeslots;
-
-    public function __construct()
-    {
-        $this->timeslots = new ArrayCollection();
-    }
+    private $timeslot;
 
     public function getId(): ?int
     {
@@ -50,28 +44,14 @@ class Workingday
         return $this;
     }
 
-    /**
-     * @return Collection|Timeslot[]
-     */
-    public function getTimeslots(): Collection
+    public function getTimeslot(): ?Timeslot
     {
-        return $this->timeslots;
+        return $this->timeslot;
     }
 
-    public function addTimeslot(Timeslot $timeslot): self
+    public function setTimeslot(?Timeslot $timeslot): self
     {
-        if (!$this->timeslots->contains($timeslot)) {
-            $this->timeslots[] = $timeslot;
-        }
-
-        return $this;
-    }
-
-    public function removeTimeslot(Timeslot $timeslot): self
-    {
-        if ($this->timeslots->contains($timeslot)) {
-            $this->timeslots->removeElement($timeslot);
-        }
+        $this->timeslot = $timeslot;
 
         return $this;
     }

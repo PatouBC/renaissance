@@ -21,7 +21,6 @@ class WorkingdayController extends AbstractController
     public function index(WorkingdayRepository $workingdayRepository): Response
     {
         return $this->render('workingday/index.html.twig', [
-            'mainNavDispo' => true,
             'workingdays' => $workingdayRepository->findAll(),
         ]);
     }

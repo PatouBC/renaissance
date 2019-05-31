@@ -1,57 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créneaux horaires{% endblock %}
+{% block title %}Timeslot index{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <h3>Liste des créneaux horaires</h3>
+    <h1>Timeslot index</h1>
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Slot</th>
-                        <th>Type de consultation</th>
-                        <th>Utilisateur</th>
-                        <th>Disponibilité</th>
-                        <th>En attente</th>
-                        <th>Confirmé</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for timeslot in timeslots %}
-                        <tr>
-                            <td>{{ timeslot.id }}</td>
-                            <td>{{ timeslot.slot }}</td>
-                            <td>{{ timeslot.typeconsult }}</td>
-                            <td>{{ timeslot.user }}</td>
-                            <td>{{ timeslot.dispo ? 'Oui' : 'Non' }}</td>
-                            <td>{{ timeslot.wait ? 'Oui' : 'Non' }}</td>
-                            <td>{{ timeslot.confirm ? 'Oui' : 'Non' }}</td>
-                            <td>
-                                <a href="{{ path('timeslot_show', {'id': timeslot.id}) }}">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <a href="{{ path('timeslot_edit', {'id': timeslot.id}) }}">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="6">Aucun créneau trouvé</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slot</th>
+                <th>Description</th>
+                <th>Dispo</th>
+                <th>Wait</th>
+                <th>Confirm</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for timeslot in timeslots %}
+            <tr>
+                <td>{{ timeslot.id }}</td>
+                <td>{{ timeslot.slot }}</td>
+                <td>{{ timeslot.description }}</td>
+                <td>{{ timeslot.dispo ? 'Yes' : 'No' }}</td>
+                <td>{{ timeslot.wait ? 'Yes' : 'No' }}</td>
+                <td>{{ timeslot.confirm ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('timeslot_show', {'id': timeslot.id}) }}">show</a>
+                    <a href="{{ path('timeslot_edit', {'id': timeslot.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-                <a href="{{ path('timeslot_new') }}">
-                    <button class="btn btn-success"> Ajouter un créneau</button>
-                </a>
-            </div>
-        </div>
-    </div>
+    <a href="{{ path('timeslot_new') }}">Create new</a>
 {% endblock %}

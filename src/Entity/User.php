@@ -34,15 +34,10 @@ class User extends BaseUser
     protected $surname;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Timeslot", mappedBy="user")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Timeslot", inversedBy="user")
      */
-    private $timeslots;
+    private $timeslot;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->timeslots = new ArrayCollection();
-    }
 
 
     public function getId(): ?int
@@ -84,40 +79,22 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * @return Collection|Timeslot[]
-     */
-    public function getTimeslots(): Collection
-    {
-        return $this->timeslots;
-    }
-
-    public function addTimeslot(Timeslot $timeslot): self
-    {
-        if (!$this->timeslots->contains($timeslot)) {
-            $this->timeslots[] = $timeslot;
-            $timeslot->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTimeslot(Timeslot $timeslot): self
-    {
-        if ($this->timeslots->contains($timeslot)) {
-            $this->timeslots->removeElement($timeslot);
-            // set the owning side to null (unless already changed)
-            if ($timeslot->getUser() === $this) {
-                $timeslot->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function __toString()
     {
         return $this->getName();
+    }
+
+    public function getTimeslot(): ?Timeslot
+    {
+        return $this->timeslot;
+    }
+
+    public function setTimeslot(?Timeslot $timeslot): self
+    {
+        $this->timeslot = $timeslot;
+
+        return $this;
     }
 
 }

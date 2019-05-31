@@ -1,80 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Disponibilités{% endblock %}
+{% block title %}Workingday index{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <h3>Disponibilités</h3>
+    <h1>Workingday index</h1>
 
-                <table class="table">
-                    <thead>
-                    <tr class="text-center">
-                        <th>Id</th>
-                        <th>Date</th>
-                        <th>Créneaux horaires</th>
-                        <th>Disponible</th>
-                        <th>En attente de confirmation</th>
-                        <th>Rendez-vous confirmé</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for workingday in workingdays %}
-                        <tr class="text-center">
-                            <td>{{ workingday.id }}</td>
-                            <td>{{ workingday.date ? workingday.date|date('Y-m-d') : '' }}</td>
-                            <td>
-                                {% for timeslot in workingday.timeslots %}
-                                    <div>{{ timeslot.description }}</div>
-                                {% endfor %}
-                            </td>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for workingday in workingdays %}
+            <tr>
+                <td>{{ workingday.id }}</td>
+                <td>{{ workingday.date ? workingday.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('workingday_show', {'id': workingday.id}) }}">show</a>
+                    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-                            <td>
-                                {% for timeslot in workingday.timeslots %}
-                                    {% if(timeslot.dispo) %}
-                                    <div>disponible</div>
-                                    {% else %}
-                                    <div>indisponible</div>
-                                    {% endif %}
-                                {% endfor %}
-                            </td>
-                            <td>
-                                {% for timeslot in workingday.timeslots %}
-                                    <div>{{ timeslot.wait }}</div>
-                                {% endfor %}
-                            </td>
-                            <td>
-                                {% for timeslot in workingday.timeslots %}
-                                    <div>{{ timeslot.confirm }}</div>
-                                {% endfor %}
-                            </td>
-                            <td>
-                               <div>
-                                   <a href="{{ path('workingday_show', {'id': workingday.id}) }}">
-                                       <i class="fas fa-trash"></i>
-                                   </a>
-                               </div>
-                                <div>
-                                    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="3">Aucune disponibilité trouvée</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-
-                <a href="{{ path('workingday_new') }}">
-                    <button class="btn btn-success"> Ajouter une journée</button>
-                </a>
-            </div>
-        </div>
-    </div>
+    <a href="{{ path('workingday_new') }}">Create new</a>
 {% endblock %}
