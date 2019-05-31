@@ -14,6 +14,7 @@
                         <th>Id</th>
                         <th>Slot</th>
                         <th>Type de consultation</th>
+                        <th>Utilisateur</th>
                         <th>Disponibilité</th>
                         <th>En attente</th>
                         <th>Confirmé</th>
@@ -26,6 +27,7 @@
                             <td>{{ timeslot.id }}</td>
                             <td>{{ timeslot.slot }}</td>
                             <td>{{ timeslot.typeconsult }}</td>
+                            <td>{{ timeslot.user }}</td>
                             <td>{{ timeslot.dispo ? 'Oui' : 'Non' }}</td>
                             <td>{{ timeslot.wait ? 'Oui' : 'Non' }}</td>
                             <td>{{ timeslot.confirm ? 'Oui' : 'Non' }}</td>

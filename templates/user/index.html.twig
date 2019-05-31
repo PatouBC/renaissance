@@ -17,6 +17,8 @@
                         <th>Identifiant</th>
                         <th>E-mail</th>
                         <th>Statut</th>
+                        <th>Nombre de rendez-vous pris</th>
+                        <th>Rendez-vous pris</th>
                         <th>Modifier</th>
                     </tr>
                     </thead>
@@ -33,6 +35,16 @@
                                 {% else %}
                                     <i class="fas fa-user-alt-slash"></i>
                                 {% endif %}
+                            </td>
+                            <td>
+                                {{ user.timeslots|length }}
+                            </td>
+                            <td>
+                                {% for timeslot in user.timeslots %}
+                                <div>
+                                    <div>{{ timeslot.description }}</div>
+                                </div>
+                                {% endfor %}
                             </td>
                             <td>
                                <div>
