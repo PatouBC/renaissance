@@ -21,7 +21,7 @@
         {% for workingday in workingdays %}
             <tr>
                 <td>{{ workingday.id }}</td>
-                <td>{{ workingday.date ? workingday.date|date('d-m-Y') : '' }}</td>
+                <td>{{ workingday.date ? workingday.date|date('d/m/y') : '' }}</td>
                 <td>
                     {% for timeslot in workingday.timeslots %}
                         <div>{{ timeslot.slot}}</div>

@@ -16,6 +16,7 @@ class WorkingdayType extends AbstractType
         $builder
             ->add('date', DateType::class, array(
                 'widget' => 'single_text',
+                'format' => 'dd-MM-yyyy',
                 'attr'=> ['class' => 'js-datepicker'],
                 'html5' => false
             ))

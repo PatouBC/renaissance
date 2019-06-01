@@ -9,6 +9,7 @@
                   crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" >
             <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" >
+            <link rel="stylesheet" href="{{ asset('assets/css/bootstrapDatetimepicker.min.css') }}" >
         {% endblock %}
     </head>
     <body>
@@ -65,11 +66,13 @@
         {% endblock %}
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/js/form.js') }}"></script>
-        <script src="{{ asset('assets/js/datepicker.js') }}"></script>
         {% block javascripts %}
+            <script src="{{ asset('assets/js/workingdayForm.js') }}"></script>
             <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
             <script src="{{ asset('assets/js/popper.min.js') }}"></script>
             <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/bootstrapDatetimepicker.min.js') }}"></script>
+            <script src="{{ asset('assets/js/locales/bootstrapDatetimepicker.fr.js') }}"></script>
         {% endblock %}
     </body>
 </html>
