@@ -7,13 +7,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class WorkingdayType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('date', DateType::class, array(
+                'widget' => 'single_text',
+                'attr'=> ['class' => 'js-datepicker'],
+                'html5' => false
+            ))
             ->add('timeslots', CollectionType::class, array(
                 'entry_type' => TimeslotType::class,
                 'entry_options'=> array(
