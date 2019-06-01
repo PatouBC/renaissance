@@ -21,6 +21,7 @@ class TypeconsultController extends AbstractController
     public function index(TypeconsultRepository $typeconsultRepository): Response
     {
         return $this->render('typeconsult/index.html.twig', [
+            'mainNavType'=> true,
             'typeconsults' => $typeconsultRepository->findAll(),
         ]);
     }

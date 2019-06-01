@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190531172629 extends AbstractMigration
+final class Version20190601172539 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20190531172629 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE fos_user ADD timeslot_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE fos_user ADD CONSTRAINT FK_957A6479F920B9E9 FOREIGN KEY (timeslot_id) REFERENCES timeslot (id)');
-        $this->addSql('CREATE INDEX IDX_957A6479F920B9E9 ON fos_user (timeslot_id)');
+        $this->addSql('CREATE TABLE timeslot (id INT AUTO_INCREMENT NOT NULL, slot INT NOT NULL, dispo TINYINT(1) NOT NULL, wait TINYINT(1) NOT NULL, confirmed TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +30,6 @@ final class Version20190531172629 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE fos_user DROP FOREIGN KEY FK_957A6479F920B9E9');
-        $this->addSql('DROP INDEX IDX_957A6479F920B9E9 ON fos_user');
-        $this->addSql('ALTER TABLE fos_user DROP timeslot_id');
+        $this->addSql('DROP TABLE timeslot');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Workingday;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,6 +14,17 @@ class WorkingdayType extends AbstractType
     {
         $builder
             ->add('date')
+            ->add('timeslots', CollectionType::class, array(
+                'entry_type' => TimeslotType::class,
+                'entry_options'=> array(
+                    'label'=> false,
+                    'attr'=> array('class'=> 'timeslot')
+                ),
+                'prototype'=>true,
+                'allow_add'=> true,
+                'allow_delete'=> true,
+                'by_reference'=> false
+            ))
         ;
     }
 

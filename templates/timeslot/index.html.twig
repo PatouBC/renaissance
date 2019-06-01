@@ -10,10 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Slot</th>
-                <th>Description</th>
                 <th>Dispo</th>
                 <th>Wait</th>
-                <th>Confirm</th>
+                <th>Confirmed</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,10 +21,9 @@
             <tr>
                 <td>{{ timeslot.id }}</td>
                 <td>{{ timeslot.slot }}</td>
-                <td>{{ timeslot.description }}</td>
                 <td>{{ timeslot.dispo ? 'Yes' : 'No' }}</td>
                 <td>{{ timeslot.wait ? 'Yes' : 'No' }}</td>
-                <td>{{ timeslot.confirm ? 'Yes' : 'No' }}</td>
+                <td>{{ timeslot.confirmed ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('timeslot_show', {'id': timeslot.id}) }}">show</a>
                     <a href="{{ path('timeslot_edit', {'id': timeslot.id}) }}">edit</a>
@@ -33,7 +31,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

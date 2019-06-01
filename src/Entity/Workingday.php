@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,10 +24,15 @@ class Workingday
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Timeslot", inversedBy="workingdays")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Timeslot", cascade={"all"}, orphanRemoval=true, mappedBy="workingday")
      */
-    private $timeslot;
+    private $timeslots;
+
+    public function __construct()
+    {
+        $this->timeslots = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -44,15 +51,35 @@ class Workingday
         return $this;
     }
 
-    public function getTimeslot(): ?Timeslot
+    /**
+     * @return Collection|Timeslot[]
+     */
+    public function getTimeslots(): Collection
     {
-        return $this->timeslot;
+        return $this->timeslots;
     }
 
-    public function setTimeslot(?Timeslot $timeslot): self
+    public function addTimeslot(Timeslot $timeslot): self
     {
-        $this->timeslot = $timeslot;
+        if (!$this->timeslots->contains($timeslot)) {
+            $this->timeslots[] = $timeslot;
+            $timeslot->setWorkingday($this);
+        }
 
         return $this;
     }
+
+    public function removeTimeslot(Timeslot $timeslot): self
+    {
+        if ($this->timeslots->contains($timeslot)) {
+            $this->timeslots->removeElement($timeslot);
+            // set the owning side to null (unless already changed)
+            if ($timeslot->getWorkingday() === $this) {
+                $timeslot->setWorkingday(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

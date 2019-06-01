@@ -10,6 +10,10 @@
             <tr>
                 <th>Id</th>
                 <th>Date</th>
+                <th>Créneaux horaires</th>
+                <th>Disponible</th>
+                <th>En attente</th>
+                <th>Confirmé</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,7 +21,27 @@
         {% for workingday in workingdays %}
             <tr>
                 <td>{{ workingday.id }}</td>
-                <td>{{ workingday.date ? workingday.date|date('Y-m-d') : '' }}</td>
+                <td>{{ workingday.date ? workingday.date|date('d-m-Y') : '' }}</td>
+                <td>
+                    {% for timeslot in workingday.timeslots %}
+                        <div>{{ timeslot.slot}}</div>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for timeslot in workingday.timeslots %}
+                        <div>{{ timeslot.dispo}}</div>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for timeslot in workingday.timeslots %}
+                        <div>{{ timeslot.wait}}</div>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for timeslot in workingday.timeslots %}
+                        <div>{{ timeslot.confirmed}}</div>
+                    {% endfor %}
+                </td>
                 <td>
                     <a href="{{ path('workingday_show', {'id': workingday.id}) }}">show</a>
                     <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">edit</a>

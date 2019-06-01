@@ -32,6 +32,7 @@ class UserController extends AbstractController
     {
         $users = $this->userManager->findUsers();
         return $this->render('user/index.html.twig', [
+            'mainNavUser'=> true,
             'users' => $users,
         ]);
     }
