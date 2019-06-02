@@ -1,26 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Workingday{% endblock %}
+{% block title %}Jour disponible{% endblock %}
 
 {% block body %}
-    <h1>Workingday</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Jour disponible</h3>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ workingday.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ workingday.date ? workingday.date|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Créneaux horaires</th>
+                        <th>Disponible</th>
+                        <th>Confirmé</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ workingday.id }}</td>
+                        <td>{{ workingday.date ? workingday.date|date('d/m/y') : '' }}</td>
+                        <td>
+                            {% for timeslot in workingday.timeslots %}
+                                <div>{{ timeslot.slot }}</div>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for timeslot in workingday.timeslots %}
+                                <div>{{ timeslot.dispo }}</div>
+                            {% endfor %}
+                        </td>
 
-    <a href="{{ path('workingday_index') }}">back to list</a>
+                        <td>
+                            {% for timeslot in workingday.timeslots %}
+                                <div>
+                                    {% if(timeslot.confirmed) %}
+                                        {{ 'Confirmé' }}
+                                    {% endif %}
+                                </div>
 
-    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">edit</a>
+                            {% endfor %}
+                        </td>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="{{ path('workingday_index') }}">
+                        <button class="btn btn-secondary">Retour à la liste des jours disponibles</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">
+                        <button class="btn btn-success">Modifier</button>
+                    </a>
+                </div>
 
-    {{ include('workingday/_delete_form.html.twig') }}
+                {{ include('workingday/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

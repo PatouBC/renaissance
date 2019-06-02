@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Listes des disponibilités{% endblock %}
+{% block title %}Listes des jours disponibles{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-6">
-                <h3>Listes des disponibilités</h3>
+                <h3>Listes des jours disponibles</h3>
 
                 <table class="table">
                     <thead>
@@ -15,7 +15,6 @@
                         <th>Date</th>
                         <th>Créneaux horaires</th>
                         <th>Disponible</th>
-                        <th>En attente</th>
                         <th>Confirmé</th>
                         <th>actions</th>
                     </tr>
@@ -35,25 +34,26 @@
                                     <div>{{ timeslot.dispo }}</div>
                                 {% endfor %}
                             </td>
+
                             <td>
                                 {% for timeslot in workingday.timeslots %}
-                                    <div>{{ timeslot.wait }}</div>
-                                {% endfor %}
-                            </td>
-                            <td>
-                                {% for timeslot in workingday.timeslots %}
-                                    <div>{{ timeslot.confirmed }}</div>
+                                    <div>
+                                        {% if(timeslot.confirmed) %}
+                                                {{ 'Confirmé' }}
+                                        {% endif %}
+                                    </div>
+
                                 {% endfor %}
                             </td>
                             <td>
                                 <div>
                                     <a href="{{ path('workingday_show', {'id': workingday.id}) }}">
-                                        show
+                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                                 <div>
                                     <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">
-                                        edit
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                 </div>
                             </td>
@@ -66,7 +66,9 @@
                     </tbody>
                 </table>
 
-                <a href="{{ path('workingday_new') }}">Create new</a>
+                <a href="{{ path('workingday_new') }}">
+                    <button class="btn btn-success"> Créer un jour disponible</button>
+                </a>
             </div>
         </div>
     </div>

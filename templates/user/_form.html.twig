@@ -1,4 +1,14 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+{% if ( user.username == app.user.username ) %}
+<h6>
+    {{ form_label(form.enabled, 'Statut') }}
+</h6>
+<div>
+    {{ form_widget(form.enabled, {'disabled' : 'disabled'}) }}
+    <i class="fas fa-lock"></i>
+</div>
+{% endif %}
+{{ form_widget(form) }}
     <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190601173112 extends AbstractMigration
+final class Version20190602154746 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,9 @@ final class Version20190601173112 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE timeslot ADD workingday_id INT NOT NULL');
-        $this->addSql('ALTER TABLE timeslot ADD CONSTRAINT FK_3BE452F7DECCCC0A FOREIGN KEY (workingday_id) REFERENCES workingday (id)');
-        $this->addSql('CREATE INDEX IDX_3BE452F7DECCCC0A ON timeslot (workingday_id)');
+        $this->addSql('CREATE TABLE timeslot (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, typeconsult_id INT DEFAULT NULL, slot INT NOT NULL, dispo TINYINT(1) NOT NULL, confirmed TINYINT(1) NOT NULL, INDEX IDX_3BE452F7A76ED395 (user_id), INDEX IDX_3BE452F7C14B2C95 (typeconsult_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE timeslot ADD CONSTRAINT FK_3BE452F7A76ED395 FOREIGN KEY (user_id) REFERENCES fos_user (id)');
+        $this->addSql('ALTER TABLE timeslot ADD CONSTRAINT FK_3BE452F7C14B2C95 FOREIGN KEY (typeconsult_id) REFERENCES typeconsult (id)');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +32,6 @@ final class Version20190601173112 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE timeslot DROP FOREIGN KEY FK_3BE452F7DECCCC0A');
-        $this->addSql('DROP INDEX IDX_3BE452F7DECCCC0A ON timeslot');
-        $this->addSql('ALTER TABLE timeslot DROP workingday_id');
+        $this->addSql('DROP TABLE timeslot');
     }
 }

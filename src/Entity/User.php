@@ -34,7 +34,7 @@ class User extends BaseUser
     protected $surname;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Timeslot", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Timeslot",cascade={"all"}, orphanRemoval=true, mappedBy="user")
      */
     private $timeslots;
 
@@ -43,7 +43,6 @@ class User extends BaseUser
         parent::__construct();
         $this->timeslots = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {

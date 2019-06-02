@@ -33,7 +33,6 @@ class Workingday
         $this->timeslots = new ArrayCollection();
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -81,5 +80,6 @@ class Workingday
 
         return $this;
     }
+
 
 }

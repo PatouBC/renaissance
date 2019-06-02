@@ -14,8 +14,11 @@ class TimeslotType extends AbstractType
         $builder
             ->add('slot')
             ->add('dispo')
-            ->add('wait')
             ->add('confirmed')
+            ->add('user')
+            ->add('typeconsult', null, array(
+                'expanded'=> true
+            ))
         ;
     }
 

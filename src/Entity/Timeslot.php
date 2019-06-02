@@ -29,11 +29,6 @@ class Timeslot
     /**
      * @ORM\Column(type="boolean")
      */
-    private $wait;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
     private $confirmed;
 
     /**
@@ -77,18 +72,6 @@ class Timeslot
     public function setDispo(bool $dispo): self
     {
         $this->dispo = $dispo;
-
-        return $this;
-    }
-
-    public function getWait(): ?bool
-    {
-        return $this->wait;
-    }
-
-    public function setWait(bool $wait): self
-    {
-        $this->wait = $wait;
 
         return $this;
     }
@@ -140,4 +123,5 @@ class Timeslot
 
         return $this;
     }
+
 }

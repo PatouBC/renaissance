@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Slot</th>
                 <th>Dispo</th>
-                <th>Wait</th>
                 <th>Confirmed</th>
                 <th>actions</th>
             </tr>
@@ -22,7 +21,6 @@
                 <td>{{ timeslot.id }}</td>
                 <td>{{ timeslot.slot }}</td>
                 <td>{{ timeslot.dispo ? 'Yes' : 'No' }}</td>
-                <td>{{ timeslot.wait ? 'Yes' : 'No' }}</td>
                 <td>{{ timeslot.confirmed ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('timeslot_show', {'id': timeslot.id}) }}">show</a>
@@ -31,7 +29,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

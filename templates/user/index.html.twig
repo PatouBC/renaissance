@@ -17,8 +17,6 @@
                         <th>Identifiant</th>
                         <th>E-mail</th>
                         <th>Statut</th>
-                        <th>Nombre de rendez-vous pris</th>
-                        <th>Rendez-vous pris</th>
                         <th>Modifier</th>
                     </tr>
                     </thead>
@@ -37,24 +35,14 @@
                                 {% endif %}
                             </td>
                             <td>
-                                {{ user.timeslots|length }}
-                            </td>
-                            <td>
-                                {% for timeslot in user.timeslots %}
-                                <div>
-                                    <div>{{ timeslot.description }}</div>
-                                </div>
-                                {% endfor %}
-                            </td>
-                            <td>
                                <div>
-                                   {% if ( user.username == app.user.username ) %}
-                                   <i class="fas fa-lock"></i>
-                                   {% else %}
+
+
+
                                     <a href="{{ path('user_edit', {'id': user.id}) }}">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                   {% endif %}
+
                                </div>
                             </td>
                         </tr>
