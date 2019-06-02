@@ -1,59 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Workingday index{% endblock %}
+{% block title %}Listes des disponibilités{% endblock %}
 
 {% block body %}
-    <h1>Workingday index</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h3>Listes des disponibilités</h3>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Créneaux horaires</th>
-                <th>Disponible</th>
-                <th>En attente</th>
-                <th>Confirmé</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for workingday in workingdays %}
-            <tr>
-                <td>{{ workingday.id }}</td>
-                <td>{{ workingday.date ? workingday.date|date('d/m/y') : '' }}</td>
-                <td>
-                    {% for timeslot in workingday.timeslots %}
-                        <div>{{ timeslot.slot}}</div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Créneaux horaires</th>
+                        <th>Disponible</th>
+                        <th>En attente</th>
+                        <th>Confirmé</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for workingday in workingdays %}
+                        <tr>
+                            <td>{{ workingday.id }}</td>
+                            <td>{{ workingday.date ? workingday.date|date('d/m/y') : '' }}</td>
+                            <td>
+                                {% for timeslot in workingday.timeslots %}
+                                    <div>{{ timeslot.slot }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for timeslot in workingday.timeslots %}
+                                    <div>{{ timeslot.dispo }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for timeslot in workingday.timeslots %}
+                                    <div>{{ timeslot.wait }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for timeslot in workingday.timeslots %}
+                                    <div>{{ timeslot.confirmed }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="{{ path('workingday_show', {'id': workingday.id}) }}">
+                                        show
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">
+                                        edit
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">Aucune disponibilité trouvée</td>
+                        </tr>
                     {% endfor %}
-                </td>
-                <td>
-                    {% for timeslot in workingday.timeslots %}
-                        <div>{{ timeslot.dispo}}</div>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for timeslot in workingday.timeslots %}
-                        <div>{{ timeslot.wait}}</div>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for timeslot in workingday.timeslots %}
-                        <div>{{ timeslot.confirmed}}</div>
-                    {% endfor %}
-                </td>
-                <td>
-                    <a href="{{ path('workingday_show', {'id': workingday.id}) }}">show</a>
-                    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    </tbody>
+                </table>
 
-    <a href="{{ path('workingday_new') }}">Create new</a>
+                <a href="{{ path('workingday_new') }}">Create new</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

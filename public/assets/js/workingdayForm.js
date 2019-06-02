@@ -17,6 +17,7 @@ function addItemForm($collectionHolder, $newItemLi) {
     addItemFormDeleteLink($newFormLi);
 }
 
+
 $(document).ready(function(){
     console.log("JQUERY READY");
 

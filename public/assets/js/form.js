@@ -12,6 +12,9 @@ $(document).ready(function(){
         calendarWeeks: true,
         autoclose: true,
         todayHighlight: true,
-        toggleActive: true
+        toggleActive: true,
+        orientation: "right",
+        clearBtn: true,
+
     });
 })
