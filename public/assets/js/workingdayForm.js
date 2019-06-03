@@ -22,7 +22,6 @@ function addItemForm($collectionHolder, $newItem) {
 }
 
 $(document).ready(function(){
-    console.log("JQUERY READY");
 
     var $collectionHolder;
     var $addItemButton = $('<button type="button" class="btn btn-light add_item_link">Ajouter 4 créneaux</button>');
@@ -33,6 +32,7 @@ $(document).ready(function(){
 
     $collectionHolder.find('.timeslot').each(function() {
         addItemFormDeleteLink($(this));
+
     });
     $collectionHolder.data('index', $collectionHolder.find('.timeslot').length);
     $addItemButton.on('click', function(e) {

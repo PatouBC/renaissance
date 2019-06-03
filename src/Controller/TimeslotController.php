@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/timeslot")
+ * @Route("/timeslot" , host="admin.renaissance-terrehappy.fr")
  */
 class TimeslotController extends AbstractController
 {
