@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ProductType extends AbstractType
 {
@@ -16,8 +17,16 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('state')
-            ->add('effect')
+            ->add('state', CKEditorType::class, array(
+                'config'=> array(
+                    'uiColor' => '#b3eff9'
+                )
+            ))
+            ->add('effect', CKEditorType::class, array(
+                'config'=> array(
+                    'uiColor' => '#b3eff9'
+                )
+            ))
             ->add('indications', EntityType::class, array(
                 'class' => Indication::class,
                 'expanded'=>true,

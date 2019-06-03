@@ -23,7 +23,7 @@
                         <tr>
                             <td>{{ actu.id }}</td>
                             <td>{{ actu.title }}</td>
-                            <td>{{ actu.description }}</td>
+                            <td>{{ actu.description | raw }}</td>
                             <td>{% if(actu.image) %}<img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/>{% endif %}</td>
                             <td>
                                <div>

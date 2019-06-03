@@ -6,6 +6,7 @@ use App\Entity\Actu;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ActuType extends AbstractType
 {
@@ -13,7 +14,12 @@ class ActuType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
+            ->add('description', CKEditorType::class, array(
+                'config'=> array(
+                    'uiColor' => '#b3eff9'
+                )
+            ))
+
             ->add('image', ImageType::class)
         ;
     }
