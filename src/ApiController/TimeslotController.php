@@ -9,6 +9,8 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Rest\Route(path="/timeslot", host="api.renaissance-terrehappy.fr")
@@ -23,7 +25,22 @@ class TimeslotController extends AbstractFOSRestController
     public function index(TimeslotRepository $timeslotRepository): View
     {
         $timeslots = $timeslotRepository->findAll();
+        $timeslots = $this->normalize($timeslots);
         return View::create($timeslots, Response::HTTP_OK);
     }
 
+    private function normalize($object)
+    {
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $object = $serializer->normalize($object, null,
+            ['attributes' => [
+                    'id',
+                    'slot',
+                    'dispo',
+                    'confirmed',
+                    'user',
+                    'typeconsult',
+            ]]);
+        return $object;
+    }
 }

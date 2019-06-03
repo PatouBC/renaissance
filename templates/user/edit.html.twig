@@ -3,19 +3,19 @@
 {% block title %}Modifier un Utilisateur{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-9">
-    <h3>Modifier un Utilisateur</h3>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Modifier un Utilisateur</h3>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+                {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('user_index') }}">
-        <button class="btn btn-secondary">Retour à la liste des utilisateurs</button>
-    </a>
+                <a href="{{ path('user_index') }}">
+                    <button class="btn btn-secondary">Retour à la liste des utilisateurs</button>
+                </a>
 
 
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

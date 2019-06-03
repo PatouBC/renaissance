@@ -47,6 +47,8 @@ class WorkingdayController extends AbstractFOSRestController
         return View::create($workingday,  Response::HTTP_OK);
     }
 
+
+
     private function normalize($object)
     {
         $serializer = new Serializer([new ObjectNormalizer()]);
