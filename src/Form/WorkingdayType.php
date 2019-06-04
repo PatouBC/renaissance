@@ -14,12 +14,9 @@ class WorkingdayType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateType::class, array(
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'attr'=> ['class' => 'js-datepicker'],
-                'html5' => false
-            ))
+            ->add('day')
+            ->add('month')
+            ->add('year')
             ->add('timeslots', CollectionType::class, array(
                 'entry_type' => TimeslotType::class,
                 'entry_options'=> array(

@@ -29,6 +29,17 @@ class TimeslotController extends AbstractFOSRestController
         return View::create($timeslots, Response::HTTP_OK);
     }
 
+    /**
+     * @Rest\Get(
+     *     path="/{id}",
+     *     name="timeslot_show_api"
+     * )
+     */
+    public function show(Timeslot $timeslot): View
+    {
+        $timeslot = $this->normalize($timeslot);
+        return View::create($timeslot,  Response::HTTP_OK);
+    }
     private function normalize($object)
     {
         $serializer = new Serializer([new ObjectNormalizer()]);

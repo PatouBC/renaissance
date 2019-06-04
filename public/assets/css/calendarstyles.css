@@ -1,0 +1,53 @@
+.working-day {
+    background: #e5fad9;
+}
+
+.fc-today .working-day {
+    background: #cafac0;
+}
+
+.fc-left {
+    display: flex;
+    align-items: center;
+}
+.fc-day.fc-future:not(.fc-other-month) {
+    cursor: pointer;
+}
+
+.fc-highlight {
+    background: transparent;
+}
+
+.fc-highlight-skeleton {
+    pointer-events: none;
+}
+
+.fc-button-success {
+    color: #fff;
+    background-color: #29503f;
+    border-color: #2C3E50;
+    line-height: 1em;
+    padding: 2px 5px;
+}
+.fc-button-reset {
+    color: #fff;
+    background-color: #502529;
+    border-color: #2C3E50;
+    line-height: 1em;
+    padding: 2px 5px;
+}
+.fc-button-send {
+    color: #fff;
+    background-color: #04ba64;
+    border-color: #2C3E50;
+    line-height: 1em;
+    padding: 2px 5px;
+}
+.fc-event.available {
+    color: #fff;
+    background-color: #48ba5f;
+}
+.fc-event.reserved{
+    color: #fff;
+    background-color: #ba7a32;
+}

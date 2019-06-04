@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Slot</th>
+                <th>Description</th>
                 <th>Dispo</th>
                 <th>Confirmed</th>
                 <th>actions</th>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ timeslot.id }}</td>
                 <td>{{ timeslot.slot }}</td>
+                <td>{{ timeslot.description }}</td>
                 <td>{{ timeslot.dispo ? 'Yes' : 'No' }}</td>
                 <td>{{ timeslot.confirmed ? 'Yes' : 'No' }}</td>
                 <td>
@@ -36,4 +38,7 @@
     </table>
 
     <a href="{{ path('timeslot_new') }}">Create new</a>
+    {% block myscript %}
+
+    {% endblock %}
 {% endblock %}

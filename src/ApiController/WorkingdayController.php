@@ -38,7 +38,7 @@ class WorkingdayController extends AbstractFOSRestController
     /**
      * @Rest\Get(
      *     path="/{id}",
-     *     name="workingdayshow_api"
+     *     name="workingday_show_api"
      * )
      */
     public function show(Workingday $workingday): View
@@ -47,6 +47,26 @@ class WorkingdayController extends AbstractFOSRestController
         return View::create($workingday,  Response::HTTP_OK);
     }
 
+    /**
+     * @Rest\Post(
+     *     path="/new",
+     *     name="workingday_create_api")
+     */
+    public function create(Request $request): View
+    {
+        $workingday = new Workingday();
+
+        $workingday->setDay($request->get('day'));
+        $workingday->setMonth($request->get('month'));
+        $workingday->setYear($request->get('year'));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($workingday);
+
+        $em->flush();
+
+        return View::create($workingday, Response::HTTP_CREATED);
+    }
 
 
     private function normalize($object)

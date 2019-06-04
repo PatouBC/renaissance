@@ -19,9 +19,19 @@ class Workingday
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=255)
      */
-    private $date;
+    private $year;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $month;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $day;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Timeslot", cascade={"all"}, orphanRemoval=true, mappedBy="workingday")
@@ -38,14 +48,38 @@ class Workingday
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getYear(): ?string
     {
-        return $this->date;
+        return $this->year;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setYear(string $year): self
     {
-        $this->date = $date;
+        $this->year = $year;
+
+        return $this;
+    }
+
+    public function getMonth(): ?string
+    {
+        return $this->month;
+    }
+
+    public function setMonth(string $month): self
+    {
+        $this->month = $month;
+
+        return $this;
+    }
+
+    public function getDay(): ?string
+    {
+        return $this->day;
+    }
+
+    public function setDay(string $day): self
+    {
+        $this->day = $day;
 
         return $this;
     }

@@ -11,6 +11,9 @@
             <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" >
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrapDatetimepicker.min.css') }}" >
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrapDatetimepicker3.min.css') }}" >
+            <link rel="stylesheet" href="{{ asset('fullcalendar/core/main.css') }}"  />
+            <link rel="stylesheet" href="{{ asset('fullcalendar/daygrid/main.css') }}"  />
+            <link rel="stylesheet" href="{{ asset('assets/css/calendarstyles.css') }}" >
         {% endblock %}
     </head>
     <body>
@@ -72,9 +75,15 @@
             <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
             <script src="{{ asset('assets/js/bootstrapDatetimepicker.min.js') }}"></script>
             <script src="{{ asset('assets/js/locales/bootstrapDatetimepicker.fr.js') }}"></script>
+            <script src="{{ asset('fullcalendar/core/main.js') }}"></script>
+            <script src="{{ asset('fullcalendar/interaction/main.js') }}"></script>
+            <script src="{{ asset('fullcalendar/daygrid/main.js') }}"></script>
+            <script src="{{ asset('fullcalendar/core/locales/fr.js') }}"></script>
+
             <script src="{{ asset('assets/js/form.js') }}"></script>
             <script src="{{ asset('assets/js/workingdayForm.js') }}"></script>
             <script src="{{ asset('assets/js/resettingForm.js') }}"></script>
         {% endblock %}
+
     </body>
 </html>
