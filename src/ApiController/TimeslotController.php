@@ -4,6 +4,7 @@ namespace App\ApiController;
 
 use App\Entity\Timeslot;
 use App\Repository\TimeslotRepository;
+use App\Repository\WorkingdayRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
@@ -25,7 +26,7 @@ class TimeslotController extends AbstractFOSRestController
     public function index(TimeslotRepository $timeslotRepository): View
     {
         $timeslots = $timeslotRepository->findAll();
-        $timeslots = $this->normalize($timeslots);
+
         return View::create($timeslots, Response::HTTP_OK);
     }
 
@@ -37,21 +38,44 @@ class TimeslotController extends AbstractFOSRestController
      */
     public function show(Timeslot $timeslot): View
     {
-        $timeslot = $this->normalize($timeslot);
         return View::create($timeslot,  Response::HTTP_OK);
     }
-    private function normalize($object)
+
+    /**
+     * @Rest\Post(
+     *     path="/new",
+     *     name="timeslot_create_api")
+     */
+    public function create(Request $request): View
     {
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $object = $serializer->normalize($object, null,
-            ['attributes' => [
-                    'id',
-                    'slot',
-                    'dispo',
-                    'confirmed',
-                    'user',
-                    'typeconsult',
-            ]]);
-        return $object;
+        $timeslot = new Timeslot();
+        $timeslot->setSlot($request->get('slot'));
+        $timeslot->setDispo($request->get('dispo'));
+        $timeslot->setConfirmed($request->get('confirmed'));
+        $timeslot->setDescription($request->get('description'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($timeslot);
+        $em->flush();
+
+        return View::create($timeslot, Response::HTTP_CREATED);
+    }
+
+    /**
+     * @Rest\Put(
+     *     path="/{id}",
+     *     name="timeslot_edit_api")
+     */
+    public function edit(Request $request, Timeslot $timeslot, WorkingdayRepository $workingdayRepository)
+    {
+        if($timeslot){
+            $timeslot->setSlot($request->get('slot'));
+            $timeslot->setDispo($request->get('dispo'));
+            $timeslot->setConfirmed($request->get('confirmed'));
+            $timeslot->setDescription($request->get('description'));
+            $workingday = $workingdayRepository->find($request->get('workingday'));
+            $timeslot->setWorkingday($workingday);
+
+        }
+        return View::create($timeslot, Response::HTTP_OK);
     }
 }

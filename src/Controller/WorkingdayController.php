@@ -32,6 +32,7 @@ class WorkingdayController extends AbstractController
     public function new(Request $request): Response
     {
         $workingday = new Workingday();
+
         $form = $this->createForm(WorkingdayType::class, $workingday);
         $form->handleRequest($request);
 

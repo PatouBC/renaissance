@@ -31,7 +31,6 @@ class WorkingdayController extends AbstractFOSRestController
     public function index(WorkingdayRepository $workingdayRepository): View
     {
         $workingdays = $workingdayRepository->findAll();
-        $workingdays = $this->normalize($workingdays);
         return View::create($workingdays, Response::HTTP_OK);
     }
 
@@ -43,51 +42,8 @@ class WorkingdayController extends AbstractFOSRestController
      */
     public function show(Workingday $workingday): View
     {
-        $workingday = $this->normalize($workingday);
         return View::create($workingday,  Response::HTTP_OK);
     }
 
-    /**
-     * @Rest\Post(
-     *     path="/new",
-     *     name="workingday_create_api")
-     */
-    public function create(Request $request): View
-    {
-        $workingday = new Workingday();
 
-        $workingday->setDay($request->get('day'));
-        $workingday->setMonth($request->get('month'));
-        $workingday->setYear($request->get('year'));
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($workingday);
-
-        $em->flush();
-
-        return View::create($workingday, Response::HTTP_CREATED);
-    }
-
-
-    private function normalize($object)
-    {
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $object = $serializer->normalize($object, null,
-            ['attributes' => [
-                'id',
-                'date' =>[
-                    'timestamp'
-                ],
-                'timeslots' =>[
-                    'id',
-                    'slot',
-                    'dispo',
-                    'confirmed',
-                    'user',
-                    'typeconsult',
-
-                ]
-            ]]);
-        return $object;
-    }
 }
