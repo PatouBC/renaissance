@@ -19,13 +19,8 @@ class UserType extends AbstractType
                 'label'=> 'Nom'))
             ->add('surname', null, array(
                 'label'=> 'Prénom'))
-            ->add('username', null, array(
-                'label'=> 'Identifiant'))
-            ->add('email', null, array(
-                'label'=> 'E-mail'))
             ->add('enabled', null, array(
                 'label'=> 'Statut'))
-
         ;
     }
 
