@@ -1,13 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit DayPart{% endblock %}
+{% block title %}Modifier un rendez-vous{% endblock %}
 
 {% block body %}
-    <h1>Edit DayPart</h1>
 
-    {{ include('day_part/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h3>Modifier un rendez-vous</h3>
+                <h6>Date</h6>
+                <div class="edit">
+                   {{ day_part.workingday.daydate }}/
+                   {{ day_part.workingday.daymonth }}/
+                   {{ day_part.workingday.dayyear }}
+                </div>
+                <h6>Créneau horaire</h6>
+                <div class="edit">
+                    {{ day_part.type.definition }}
+                </div>
 
-    <a href="{{ path('day_part_index') }}">back to list</a>
+                {{ include('day_part/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    {{ include('day_part/_delete_form.html.twig') }}
+                <a href="{{ path('calendar_index') }}">
+                    <button class="btn btn-secondary">Retour au calendrier</button>
+                </a>
+
+                {{ include('day_part/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

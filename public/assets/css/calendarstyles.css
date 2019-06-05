@@ -13,6 +13,9 @@
 .fc-day.fc-future:not(.fc-other-month), .fc-event:not(.status-0) {
     cursor: pointer;
 }
+.fc-title {
+    cursor: pointer;
+}
 
 .fc-highlight {
     background: transparent;

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/working/day")
+ * @Route("/workingday", host="admin.renaissance-terrehappy.fr")
  */
 class WorkingDayController extends AbstractController
 {
@@ -91,6 +91,6 @@ class WorkingDayController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('working_day_index');
+        return $this->redirectToRoute('calendar_index');
     }
 }

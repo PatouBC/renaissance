@@ -15,6 +15,7 @@ class WorkingDayType extends AbstractType
             ->add('daydate')
             ->add('daymonth')
             ->add('dayyear')
+            ->add('dayparts')
         ;
     }
 

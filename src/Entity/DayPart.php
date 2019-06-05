@@ -109,4 +109,5 @@ class DayPart
 
         return $this;
     }
+
 }

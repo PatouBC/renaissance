@@ -13,9 +13,7 @@ class DayPartType extends AbstractType
     {
         $builder
             ->add('status')
-            ->add('type')
             ->add('user')
-            ->add('workingDay')
             ->add('consult')
         ;
     }

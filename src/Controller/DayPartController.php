@@ -69,7 +69,7 @@ class DayPartController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('day_part_index', [
+            return $this->redirectToRoute('calendar_index', [
                 'id' => $dayPart->getId(),
             ]);
         }
@@ -91,6 +91,6 @@ class DayPartController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('day_part_index');
+        return $this->redirectToRoute('calendar_index');
     }
 }

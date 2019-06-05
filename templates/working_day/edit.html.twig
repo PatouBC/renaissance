@@ -3,11 +3,17 @@
 {% block title %}Edit WorkingDay{% endblock %}
 
 {% block body %}
-    <h1>Edit WorkingDay</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h3>Modifier un jour</h3>
 
-    {{ include('working_day/_form.html.twig', {'button_label': 'Update'}) }}
+                {{ include('working_day/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('working_day_index') }}">back to list</a>
+                <a href="{{ path('working_day_index') }}">back to list</a>
 
-    {{ include('working_day/_delete_form.html.twig') }}
+                {{ include('working_day/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
