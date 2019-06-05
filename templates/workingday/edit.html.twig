@@ -1,22 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Disponibilité{% endblock %}
+{% block title %}Edit Workingday{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <h3>Modifier une disponibilité</h3>
+    <h1>Edit Workingday</h1>
 
-                {{ include('workingday/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('workingday/_form.html.twig', {'button_label': 'Update'}) }}
 
-                <a href="{{ path('workingday_index') }}">
-                    <button class="btn btn-secondary">Retour à la liste des disponibilités</button>
-                </a>
+    <a href="{{ path('workingday_index') }}">back to list</a>
 
-                {{ include('workingday/_delete_form.html.twig') }}
-            </div>
-        </div>
-    </div>
-
+    {{ include('workingday/_delete_form.html.twig') }}
 {% endblock %}

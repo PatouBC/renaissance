@@ -1,63 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jour disponible{% endblock %}
+{% block title %}Workingday{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <h3>Jour disponible</h3>
+    <h1>Workingday</h1>
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Date</th>
-                        <th>Créneaux horaires</th>
-                        <th>Disponible</th>
-                        <th>Confirmé</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{{ workingday.id }}</td>
-                        <td>{{ workingday.date ? workingday.date|date('d/m/y') : '' }}</td>
-                        <td>
-                            {% for timeslot in workingday.timeslots %}
-                                <div>{{ timeslot.slot }}</div>
-                            {% endfor %}
-                        </td>
-                        <td>
-                            {% for timeslot in workingday.timeslots %}
-                                <div>{{ timeslot.dispo }}</div>
-                            {% endfor %}
-                        </td>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ workingday.id }}</td>
+            </tr>
+            <tr>
+                <th>Daydate</th>
+                <td>{{ workingday.daydate }}</td>
+            </tr>
+            <tr>
+                <th>Daymonth</th>
+                <td>{{ workingday.daymonth }}</td>
+            </tr>
+            <tr>
+                <th>Dayyear</th>
+                <td>{{ workingday.dayyear }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-                        <td>
-                            {% for timeslot in workingday.timeslots %}
-                                <div>
-                                    {% if(timeslot.confirmed) %}
-                                        {{ 'Confirmé' }}
-                                    {% endif %}
-                                </div>
+    <a href="{{ path('workingday_index') }}">back to list</a>
 
-                            {% endfor %}
-                        </td>
-                    </tbody>
-                </table>
-                <div>
-                    <a href="{{ path('workingday_index') }}">
-                        <button class="btn btn-secondary">Retour à la liste des jours disponibles</button>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">
-                        <button class="btn btn-success">Modifier</button>
-                    </a>
-                </div>
+    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">edit</a>
 
-                {{ include('workingday/_delete_form.html.twig') }}
-            </div>
-        </div>
-    </div>
+    {{ include('workingday/_delete_form.html.twig') }}
 {% endblock %}

@@ -21,13 +21,13 @@ indication_homepage:
     path: /indication
     defaults: {_templates: indication: index.html.twig }
 
-workingday_homepage:
-    path: /workingday
-    defaults: {_templates: workingday: index.html.twig }
+calendar_homepage:
+    path: /calendar
+    defaults: {_templates: calendar: index.html.twig }
 
-timeslot_homepage:
-    path: /timeslot
-    defaults: {_templates: timeslot: index.html.twig }
+daypart_homepage:
+    path: /daypart
+    defaults: {_templates: daypart: index.html.twig }
 
 typeconsult_homepage:
     path: /typeconsult

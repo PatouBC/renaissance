@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Daypartstatus{% endblock %}
+
+{% block body %}
+    <h1>Edit Daypartstatus</h1>
+
+    {{ include('daypartstatus/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('daypartstatus_index') }}">back to list</a>
+
+    {{ include('daypartstatus/_delete_form.html.twig') }}
+{% endblock %}

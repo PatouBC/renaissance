@@ -19,28 +19,28 @@ class Workingday
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=2)
      */
-    private $year;
+    private $daydate;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=2)
      */
-    private $month;
+    private $daymonth;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=4)
      */
-    private $day;
+    private $dayyear;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Timeslot", cascade={"all"}, orphanRemoval=true, mappedBy="workingday")
+     * @ORM\OneToMany(targetEntity="App\Entity\Daypart", mappedBy="workingday", cascade={"persist", "remove"}, orphanRemoval=true)
      */
-    private $timeslots;
+    private $dayparts;
 
     public function __construct()
     {
-        $this->timeslots = new ArrayCollection();
+        $this->dayparts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,72 +48,70 @@ class Workingday
         return $this->id;
     }
 
-    public function getYear(): ?string
+    public function getDaydate(): ?string
     {
-        return $this->year;
+        return $this->daydate;
     }
 
-    public function setYear(string $year): self
+    public function setDaydate(string $daydate): self
     {
-        $this->year = $year;
+        $this->daydate = $daydate;
 
         return $this;
     }
 
-    public function getMonth(): ?string
+    public function getDaymonth(): ?string
     {
-        return $this->month;
+        return $this->daymonth;
     }
 
-    public function setMonth(string $month): self
+    public function setDaymonth(string $daymonth): self
     {
-        $this->month = $month;
+        $this->daymonth = $daymonth;
 
         return $this;
     }
 
-    public function getDay(): ?string
+    public function getDayyear(): ?string
     {
-        return $this->day;
+        return $this->dayyear;
     }
 
-    public function setDay(string $day): self
+    public function setDayyear(string $dayyear): self
     {
-        $this->day = $day;
+        $this->dayyear = $dayyear;
 
         return $this;
     }
 
     /**
-     * @return Collection|Timeslot[]
+     * @return Collection|Daypart[]
      */
-    public function getTimeslots(): Collection
+    public function getDayparts(): Collection
     {
-        return $this->timeslots;
+        return $this->dayparts;
     }
 
-    public function addTimeslot(Timeslot $timeslot): self
+    public function addDaypart(Daypart $daypart): self
     {
-        if (!$this->timeslots->contains($timeslot)) {
-            $this->timeslots[] = $timeslot;
-            $timeslot->setWorkingday($this);
+        if (!$this->dayparts->contains($daypart)) {
+            $this->dayparts[] = $daypart;
+            $daypart->setWorkingday($this);
         }
 
         return $this;
     }
 
-    public function removeTimeslot(Timeslot $timeslot): self
+    public function removeDaypart(Daypart $daypart): self
     {
-        if ($this->timeslots->contains($timeslot)) {
-            $this->timeslots->removeElement($timeslot);
+        if ($this->dayparts->contains($daypart)) {
+            $this->dayparts->removeElement($daypart);
             // set the owning side to null (unless already changed)
-            if ($timeslot->getWorkingday() === $this) {
-                $timeslot->setWorkingday(null);
+            if ($daypart->getWorkingday() === $this) {
+                $daypart->setWorkingday(null);
             }
         }
 
         return $this;
     }
-
-
 }

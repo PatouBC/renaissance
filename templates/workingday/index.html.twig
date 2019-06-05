@@ -1,18 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Listes des jours disponibles{% endblock %}
+{% block title %}Workingday index{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <h3>Listes des jours disponibles</h3>
+    <h1>Workingday index</h1>
 
-                <div id='calendar'></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Daydate</th>
+                <th>Daymonth</th>
+                <th>Dayyear</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for workingday in workingdays %}
+            <tr>
+                <td>{{ workingday.id }}</td>
+                <td>{{ workingday.daydate }}</td>
+                <td>{{ workingday.daymonth }}</td>
+                <td>{{ workingday.dayyear }}</td>
+                <td>
+                    <a href="{{ path('workingday_show', {'id': workingday.id}) }}">show</a>
+                    <a href="{{ path('workingday_edit', {'id': workingday.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-            </div>
-        </div>
-    </div>
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/calendar.js') }}"></script>
+    <a href="{{ path('workingday_new') }}">Create new</a>
 {% endblock %}

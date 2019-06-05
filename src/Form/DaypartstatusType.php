@@ -2,31 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Timeslot;
+use App\Entity\Daypartstatus;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TimeslotType extends AbstractType
+class DaypartstatusType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('slot')
-            ->add('description')
-            ->add('dispo')
-            ->add('confirmed')
-            ->add('user')
-            ->add('typeconsult', null, array(
-                'expanded'=> true
-            ))
+            ->add('status')
+            ->add('value')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Timeslot::class,
+            'data_class' => Daypartstatus::class,
         ]);
     }
 }

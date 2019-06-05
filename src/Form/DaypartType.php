@@ -2,26 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Workingday;
+use App\Entity\Daypart;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class WorkingdayType extends AbstractType
+class DaypartType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('daydate')
-            ->add('daymonth')
-            ->add('dayyear')
+            ->add('status')
+            ->add('type')
+            ->add('user')
+            ->add('workingDay')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Workingday::class,
+            'data_class' => Daypart::class,
         ]);
     }
 }

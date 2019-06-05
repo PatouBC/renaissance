@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
 }
-.fc-day.fc-future:not(.fc-other-month) {
+.fc-day.fc-future:not(.fc-other-month), .fc-event:not(.status-0) {
     cursor: pointer;
 }
 
@@ -43,11 +43,15 @@
     line-height: 1em;
     padding: 2px 5px;
 }
-.fc-event.available {
+.fc-event.status-20 {
     color: #fff;
     background-color: #48ba5f;
 }
-.fc-event.reserved{
+.fc-event.status-10{
     color: #fff;
-    background-color: #ba7a32;
+    background-color: #ba5a37;
+}
+.fc-event.status-0{
+    color: #fff;
+    background-color: #aabaac;
 }

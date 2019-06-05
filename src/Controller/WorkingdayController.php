@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/workingday", host="admin.renaissance-terrehappy.fr")
+ * @Route("/workingday")
  */
 class WorkingdayController extends AbstractController
 {
@@ -21,7 +21,6 @@ class WorkingdayController extends AbstractController
     public function index(WorkingdayRepository $workingdayRepository): Response
     {
         return $this->render('workingday/index.html.twig', [
-            'mainNavDispo'=> true,
             'workingdays' => $workingdayRepository->findAll(),
         ]);
     }
@@ -32,7 +31,6 @@ class WorkingdayController extends AbstractController
     public function new(Request $request): Response
     {
         $workingday = new Workingday();
-
         $form = $this->createForm(WorkingdayType::class, $workingday);
         $form->handleRequest($request);
 
