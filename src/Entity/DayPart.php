@@ -40,6 +40,11 @@ class DayPart
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Typeconsult")
+     */
+    private $consult;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +94,18 @@ class DayPart
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getConsult(): ?Typeconsult
+    {
+        return $this->consult;
+    }
+
+    public function setConsult(?Typeconsult $consult): self
+    {
+        $this->consult = $consult;
 
         return $this;
     }

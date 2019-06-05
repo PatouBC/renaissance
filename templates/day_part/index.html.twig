@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Date</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
         {% for day_part in day_parts %}
             <tr>
                 <td>{{ day_part.id }}</td>
+                <td>{{ day_part.working_day.daydate }}</td>
                 <td>
                     <a href="{{ path('day_part_show', {'id': day_part.id}) }}">show</a>
                     <a href="{{ path('day_part_edit', {'id': day_part.id}) }}">edit</a>

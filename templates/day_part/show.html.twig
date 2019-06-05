@@ -1,22 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DayPart{% endblock %}
+{% block title %}Consultation{% endblock %}
 
 {% block body %}
-    <h1>DayPart</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ day_part.id }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <h3>Consultation</h3>
 
-    <a href="{{ path('day_part_index') }}">back to list</a>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ day_part.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ day_part.workingday.daydate }}
+                            /{{ day_part.workingday.daymonth }}
+                            /{{ day_part.workingday.dayyear }}</td>
+                    </tr>
+                    <tr>
+                        <th>Heure</th>
+                        <td>{{ day_part.type.definition }}</td>
+                    </tr>
+                    <tr>
+                        <th>Statut</th>
+                        <td>{{ day_part.status.status }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="{{ path('calendar_index') }}">
+                        <button class="btn btn-secondary">Retour au calendrier</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ path('day_part_edit', {'id': day_part.id}) }}">
+                        <button class="btn btn-success">Modifier</button>
+                    </a>
+                </div>
 
-    <a href="{{ path('day_part_edit', {'id': day_part.id}) }}">edit</a>
 
-    {{ include('day_part/_delete_form.html.twig') }}
+
+                {{ include('day_part/_delete_form.html.twig') }}
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

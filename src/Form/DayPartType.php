@@ -12,6 +12,11 @@ class DayPartType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('status')
+            ->add('type')
+            ->add('user')
+            ->add('workingDay')
+            ->add('consult')
         ;
     }
 

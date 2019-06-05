@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/day/part")
+ * @Route("/daypart", host="renaissance-terrehappy.fr")
  */
 class DayPartController extends AbstractController
 {
