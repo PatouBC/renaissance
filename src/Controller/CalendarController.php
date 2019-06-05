@@ -1,29 +1,29 @@
 <?php
-namespace App\Controller;
 
+namespace App\Controller;
 
 use App\Entity\DayPart;
 use App\Entity\DayPartStatus;
 use App\Entity\WorkingDay;
-use App\Repository\DaypartRepository;
-use App\Repository\DaypartstatusRepository;
-use App\Repository\DayparttypeRepository;
-use App\Repository\WorkingdayRepository;
+use App\Repository\DayPartRepository;
+use App\Repository\DayPartStatusRepository;
+use App\Repository\DayPartTypeRepository;
+use App\Repository\WorkingDayRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/calendar", host="admin.renaissance-terrehappy.fr")
+ * @Route("/calendar", host="admin.todo.do")
  */
 class CalendarController extends AbstractController
 {
     private $dayPartTypeRepository;
     private $dayPartStatusRepository;
     public function __construct(
-        DayparttypeRepository $dayPartTypeRepository,
-        DaypartstatusRepository $dayPartStatusRepository
+        DayPartTypeRepository $dayPartTypeRepository,
+        DayPartStatusRepository $dayPartStatusRepository
     )
     {
         $this->dayPartTypeRepository = $dayPartTypeRepository;
@@ -33,7 +33,7 @@ class CalendarController extends AbstractController
     /**
      * @Route("/", name="calendar_index", methods={"GET", "POST"})
      */
-    public function index(Request $request, WorkingdayRepository $workingDayRepository): Response
+    public function index(Request $request, WorkingDayRepository $workingDayRepository): Response
     {
 
         if ($request->getMethod() == "POST")
@@ -69,12 +69,11 @@ class CalendarController extends AbstractController
 
 
         return $this->render('calendar/index.html.twig', array(
-            'events' => $events,
-            'mainNavCalendar'=> true
+            'events' => $events
         ));
     }
 
-    private function createWorkingDay($date, WorkingdayRepository $workingDayRepository)
+    private function createWorkingDay($date, WorkingDayRepository $workingDayRepository)
     {
         $dateSplitted = explode("-",$date);
         $dateYear = $dateSplitted[0];
@@ -88,7 +87,7 @@ class CalendarController extends AbstractController
         ));
 
         if (count($exists) === 0){
-            $workingDay = new Workingday();
+            $workingDay = new WorkingDay();
             $workingDay->setDaydate($dateDate);
             $workingDay->setDaymonth($dateMonth);
             $workingDay->setDayyear($dateYear);
@@ -101,14 +100,14 @@ class CalendarController extends AbstractController
         }
     }
 
-    private function createDayParts(Workingday $workingDay)
+    private function createDayParts(WorkingDay $workingDay)
     {
-        $statusFree = $this->dayPartStatusRepository->findOneBy(array("value"=>Daypartstatus::FREE));
+        $statusFree = $this->dayPartStatusRepository->findOneBy(array("value"=>DayPartStatus::FREE));
         for ($i = 0; $i < 4; $i++)
         {
-            $part = new Daypart();
+            $part = new DayPart();
             $type = $this->dayPartTypeRepository->findOneBy(array("value"=>($i+1)));
-            $part->setWorkingday($workingDay);
+            $part->setWorkingDay($workingDay);
             $part->setStatus($statusFree);
             $part->setType($type);
             $workingDay->addDaypart($part);

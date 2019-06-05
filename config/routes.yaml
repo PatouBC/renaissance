@@ -25,9 +25,9 @@ calendar_homepage:
     path: /calendar
     defaults: {_templates: calendar: index.html.twig }
 
-daypart_homepage:
-    path: /daypart
-    defaults: {_templates: daypart: index.html.twig }
+dayparttype_homepage:
+    path: /dayparttype
+    defaults: {_templates: dayparttype: index.html.twig }
 
 typeconsult_homepage:
     path: /typeconsult

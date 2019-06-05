@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DayPartType index{% endblock %}
+
+{% block body %}
+    <h1>DayPartType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Value</th>
+                <th>Definition</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for day_part_type in day_part_types %}
+            <tr>
+                <td>{{ day_part_type.id }}</td>
+                <td>{{ day_part_type.value }}</td>
+                <td>{{ day_part_type.definition }}</td>
+                <td>
+                    <a href="{{ path('day_part_type_show', {'id': day_part_type.id}) }}">show</a>
+                    <a href="{{ path('day_part_type_edit', {'id': day_part_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('day_part_type_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DayPart{% endblock %}
+
+{% block body %}
+    <h1>Create new DayPart</h1>
+
+    {{ include('day_part/_form.html.twig') }}
+
+    <a href="{{ path('day_part_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DayPart{% endblock %}
+
+{% block body %}
+    <h1>DayPart</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ day_part.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('day_part_index') }}">back to list</a>
+
+    <a href="{{ path('day_part_edit', {'id': day_part.id}) }}">edit</a>
+
+    {{ include('day_part/_delete_form.html.twig') }}
+{% endblock %}

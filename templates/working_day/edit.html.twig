@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit WorkingDay{% endblock %}
+
+{% block body %}
+    <h1>Edit WorkingDay</h1>
+
+    {{ include('working_day/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('working_day_index') }}">back to list</a>
+
+    {{ include('working_day/_delete_form.html.twig') }}
+{% endblock %}
