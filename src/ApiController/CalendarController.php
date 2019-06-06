@@ -70,8 +70,6 @@ class CalendarController extends AbstractFOSRestController
                 return View::create($dayPart, Response::HTTP_OK);
             }
         }
-
-
     }
 
 
