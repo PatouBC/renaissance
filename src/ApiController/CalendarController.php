@@ -5,6 +5,7 @@ namespace App\ApiController;
 use App\Entity\DayPartStatus;
 use App\Repository\DayPartRepository;
 use App\Repository\DayPartStatusRepository;
+use App\Repository\TypeconsultRepository;
 use App\Repository\UserRepository;
 use App\Repository\WorkingDayRepository;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -53,17 +54,20 @@ class CalendarController extends AbstractFOSRestController
     public function addRdv(Request $request,
                            DayPartRepository $dayPartRepository,
                            DayPartStatusRepository $dayPartStatusRepository,
-                           UserRepository $userRepository): View
+                           UserRepository $userRepository,
+                           TypeconsultRepository $typeconsultRepository): View
     {
         $dayPart = $dayPartRepository->find($request->get('daypart'));
         $userRequest = $userRepository->find($request->get('user'));
+        $consultrequest = $typeconsultRepository->find($request->get('consult'));
 
-        if ($dayPart && $userRequest) {
+        if ($dayPart && $userRequest && $consultrequest) {
             if ($userRequest->getId() === $this->getUser()->getId()) {
                 $statusPending = $dayPartStatusRepository->findOneBy(array("value" => DayPartStatus::PENDING));
                 $em = $this->getDoctrine()->getManager();
                 $dayPart->setUser($userRequest);
                 $dayPart->setStatus($statusPending);
+                $dayPart->setConsult($consultrequest);
                 $em->persist($dayPart);
                 $em->flush();
 
@@ -98,6 +102,10 @@ class CalendarController extends AbstractFOSRestController
                     ],
                     'user' => [
                         'id'
+                    ],
+                    'consult' => [
+                        'id',
+                        'description'
                     ]
                 ]
             ]]);
