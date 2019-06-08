@@ -68,3 +68,9 @@ services:
         arguments: ['@router']
         tags:
             - { name: kernel.event_subscriber }
+
+    app.rdv_listener:
+        class: App\EventListener\RdvDemandeListener
+        arguments: ["@swiftmailer.mailer.default", "@twig"]
+        tags:
+            - { name: kernel.event_subscriber }

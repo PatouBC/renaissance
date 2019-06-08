@@ -9,12 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @Route("/workingday", host="admin.renaissance-terrehappy.fr")
  */
 class WorkingDayController extends AbstractController
 {
+
+
     /**
      * @Route("/", name="working_day_index", methods={"GET"})
      */

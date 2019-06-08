@@ -13,21 +13,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @Route("/calendar", host="admin.todo.do")
  */
 class CalendarController extends AbstractController
 {
+    protected $dispatcher;
     private $dayPartTypeRepository;
     private $dayPartStatusRepository;
+
     public function __construct(
         DayPartTypeRepository $dayPartTypeRepository,
-        DayPartStatusRepository $dayPartStatusRepository
+        DayPartStatusRepository $dayPartStatusRepository,
+        EventDispatcherInterface $dispatcher
     )
     {
         $this->dayPartTypeRepository = $dayPartTypeRepository;
         $this->dayPartStatusRepository = $dayPartStatusRepository;
+        $this->dispatcher = $dispatcher;
     }
 
     /**

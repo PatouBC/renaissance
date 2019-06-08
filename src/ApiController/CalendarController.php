@@ -3,6 +3,7 @@
 namespace App\ApiController;
 
 use App\Entity\DayPartStatus;
+use App\Event\RdvDemandeEvent;
 use App\Repository\DayPartRepository;
 use App\Repository\DayPartStatusRepository;
 use App\Repository\TypeconsultRepository;
@@ -17,12 +18,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @Rest\Route("/calendar", host="api.renaissance-terrehappy.fr")
  */
 class CalendarController extends AbstractFOSRestController
 {
+    protected $dispatcher;
+    public function __construct(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
     /**
      * Retrieves a collection of Task resource
      * @Rest\Get(
@@ -68,6 +76,9 @@ class CalendarController extends AbstractFOSRestController
                 $dayPart->setUser($userRequest);
                 $dayPart->setStatus($statusPending);
                 $dayPart->setConsult($consultrequest);
+
+                $rdvEvent = new RdvDemandeEvent($dayPart, $this->getUser());
+                $this->dispatcher->dispatch('rdvDemande', $rdvEvent);
                 $em->persist($dayPart);
                 $em->flush();
 

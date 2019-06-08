@@ -17,6 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class TypeconsultController extends AbstractFOSRestController
 {
+
+
     /**
      * Retrieves a collection of typeconsult resource
      * @Rest\Get(path="/", name="consultlist_api")
