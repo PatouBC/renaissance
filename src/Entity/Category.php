@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,13 +25,6 @@ class Category
      * @ORM\Column(type="string", length=2000)
      */
     private $description;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $image;
-
 
     public function getId(): ?int
     {
@@ -62,21 +53,5 @@ class Category
         $this->description = $description;
 
         return $this;
-    }
-
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(Image $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-    public function __toString()
-    {
-        return $this->getTitle();
     }
 }

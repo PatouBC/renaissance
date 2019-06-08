@@ -5,14 +5,13 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-12">
                 <h3>Liste des catégories de produits</h3>
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Id</th>
                         <th>Titre</th>
-                        <th>Image</th>
                         <th>Description</th>
                         <th>Actions</th>
                     </tr>
@@ -22,9 +21,7 @@
                         <tr>
                             <td>{{ category.id }}</td>
                             <td>{{ category.title }}</td>
-                            <td>{% if(category.image) %}<img src="{{ asset(category.image.imgpath) }}" width="150px"
-                                                             alt="{{ category.image.alt }}"/>{% endif %}</td>
-                            <td>{{ category.description }}</td>
+                            <td>{{ category.description | raw }}</td>
                             <td>
                                 <div>
                                     <a href="{{ path('category_show', {'id': category.id}) }}">

@@ -3,12 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use App\Entity\Product;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class CategoryType extends AbstractType
 {
@@ -17,11 +15,10 @@ class CategoryType extends AbstractType
         $builder
             ->add('title')
             ->add('description', CKEditorType::class, array(
-                'config'=> array(
+                'config' => array(
                     'uiColor' => '#b3eff9'
                 )
             ))
-            ->add('image', ImageType::class)
         ;
     }
 

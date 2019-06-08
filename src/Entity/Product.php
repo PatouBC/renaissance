@@ -34,11 +34,6 @@ class Product
     private $effect;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
@@ -50,6 +45,12 @@ class Product
      * @ORM\ManyToMany(targetEntity="App\Entity\Indication")
      */
     private $indications;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function __construct()
     {
@@ -104,17 +105,6 @@ class Product
         return $this->getName();
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
 
     public function getImage(): ?Image
     {
@@ -150,6 +140,18 @@ class Product
         if ($this->indications->contains($indication)) {
             $this->indications->removeElement($indication);
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
