@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 class IndicationController extends AbstractFOSRestController
 {
     /**
-     * Retrieves a collection of Category resource
+     * Retrieves a collection of Indication resource
      * @Rest\Get(path="/", name="indicationlist_api")
      * @Rest\View()
      */

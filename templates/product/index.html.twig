@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col">
+            <div class="col-9">
                 <h3>Liste des produits</h3>
                 <table class="table">
                     <thead>
@@ -27,7 +27,7 @@
                             <td>{{ product.name }}</td>
                             <td>
                                 {% if(product.image) %}
-                                    <img src="{{ asset(product.image.imgpath) }}" width="150px" alt="{{ product.image.alt }}"/>
+                                    <img src="{{ asset(product.image.imgpath) }}" width="75px" alt="{{ product.image.alt }}"/>
                                 {% endif %}
                             </td>
                             <td>{{ product.state | raw }}</td>
