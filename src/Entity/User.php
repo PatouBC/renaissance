@@ -27,11 +27,28 @@ class User extends BaseUser
      */
     protected $name;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      *
      */
-    protected $surname;
+    protected $firstname;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $rgpd;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Email", mappedBy="user")
+     */
+    private $emails;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->emails = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -56,22 +73,37 @@ class User extends BaseUser
         return $this;
     }
 
+
     /**
-     * Get Surname
+     * Get firstname
      *
      * @return string
      */
-    public function getSurname(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->surname;
+        return $this->firstname;
     }
 
-    public function setSurname(string $surname): self
+    public function setFirstname(string $firstname): self
     {
-        $this->surname = $surname;
+        $this->firstname = $firstname;
 
         return $this;
     }
+
+
+    public function getRgpd(): ?bool
+    {
+        return $this->rgpd;
+    }
+
+    public function setRgpd(?bool $rgpd): self
+    {
+        $this->rgpd = $rgpd;
+
+        return $this;
+    }
+
 
 
     public function __toString()
@@ -79,5 +111,34 @@ class User extends BaseUser
         return $this->getName();
     }
 
+    /**
+     * @return Collection|Email[]
+     */
+    public function getEmails(): Collection
+    {
+        return $this->emails;
+    }
 
+    public function addEmail(Email $email): self
+    {
+        if (!$this->emails->contains($email)) {
+            $this->emails[] = $email;
+            $email->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmail(Email $email): self
+    {
+        if ($this->emails->contains($email)) {
+            $this->emails->removeElement($email);
+            // set the owning side to null (unless already changed)
+            if ($email->getUser() === $this) {
+                $email->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 }

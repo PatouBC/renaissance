@@ -40,10 +40,11 @@ Class AuthController extends AbstractFOSRestController
         $user = new User();
         $user
             ->setName($request->get('name'))
-            ->setSurname($request->get('surname'))
+            ->setFirstname($request->get('firstname'))
             ->setUsername($request->get('username'))
             ->setPlainPassword($request->get('password'))
             ->setEmail($request->get('email'))
+            ->setRgpd(true)
             ->setEnabled(false)
             ->setRoles(['ROLE_USER'])
             ->setSuperAdmin(false)
@@ -83,7 +84,7 @@ Class AuthController extends AbstractFOSRestController
     {
         $user = $userRepository->find($this->getUser());
         $user->setName($request->get('name'));
-        $user->setSurname($request->get('surname'));
+        $user->setFirstname($request->get('firstname'));
 
         $userManager->updateUser($user);
 

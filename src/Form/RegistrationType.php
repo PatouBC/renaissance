@@ -11,6 +11,7 @@ namespace App\Form;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class RegistrationType extends AbstractType
@@ -24,7 +25,11 @@ class RegistrationType extends AbstractType
                 ))
                 ->add('surname', null, array(
                     'label' => 'Prénom'
-                ));
+                ))
+                ->add('rgpd', CheckboxType::class, array(
+                    'label' => 'J\'accepte les cgv et la politique de confidentialité',
+                    'required' => true
+    ));
     }
 
     public function getParent()

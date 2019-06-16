@@ -25,7 +25,7 @@
                         <tr class="text-center">
                             <td>{{ user.id }}</td>
                             <td>{{ user.name }}</td>
-                            <td>{{ user.surname }}</td>
+                            <td>{{ user.firstname }}</td>
                             <td>{{ user.username }}</td>
                             <td>{{ user.email }}</td>
                             <td>{% if user.enabled %}
@@ -36,9 +36,6 @@
                             </td>
                             <td>
                                <div>
-
-
-
                                     <a href="{{ path('user_edit', {'id': user.id}) }}">
                                         <i class="fas fa-edit"></i>
                                     </a>

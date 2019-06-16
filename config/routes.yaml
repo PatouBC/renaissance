@@ -36,3 +36,7 @@ typeconsult_homepage:
 user_homepage:
     path: /user
     defaults: {_templates: user: index.html.twig }
+
+email_homepage:
+    path: /email
+    defaults: {_templates: email: index.html.twig }

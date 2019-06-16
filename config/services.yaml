@@ -74,3 +74,9 @@ services:
         arguments: ["@swiftmailer.mailer.default", "@twig"]
         tags:
             - { name: kernel.event_subscriber }
+
+    fos_user_registration_confirmed:
+        class: App\EventListener\RegistrationConfirmedListener
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }

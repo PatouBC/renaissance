@@ -25,6 +25,7 @@ class IndicationController extends AbstractFOSRestController
      */
     public function index(IndicationRepository $indicationRepository): View
     {
+
         $indications = $indicationRepository->findAll();
         return View::create($indications, Response::HTTP_OK);
     }
