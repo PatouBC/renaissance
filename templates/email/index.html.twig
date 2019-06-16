@@ -27,7 +27,10 @@
                             <td>{{ email.id }}</td>
                             <td>{{ email.name }}</td>
                             <td>{{ email.firstname }}</td>
-                            <td>{{ email.user.name }} {{ email.user.firstname }}</td>
+                            <td>{% if(email.user) %}
+                                {{ email.user.name }} {{ email.user.firstname }}
+                                {% endif %}
+                            </td>
                             <td>{{ email.address }}</td>
                             <td>{{ email.object }}</td>
                             <td>{{ email.message }}</td>

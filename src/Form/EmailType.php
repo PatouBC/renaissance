@@ -14,25 +14,13 @@ class EmailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array(
-                'label' => 'Nom'
-            ))
-            ->add('firstname', null, array(
-                'label' => 'Prénom'
-            ))
-            ->add('address', null, array(
-                'label' => 'Adresse email'
-            ))
-            ->add('object', null, array(
-                'label' => 'Objet'
-            ))
+            ->add('name')
+            ->add('firstname')
+            ->add('address')
+            ->add('object')
             ->add('message')
-            ->add('treated', null, array(
-                'label' => 'Traité'
-            ))
-            ->add('user', null, array(
-                'label' => 'Utilisateur'
-            ))
+            ->add('treated')
+            ->add('user')
         ;
     }
 

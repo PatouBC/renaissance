@@ -4,8 +4,11 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmailRepository")
+ *
  */
 class Email
 {
@@ -23,6 +26,7 @@ class Email
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      */
     private $firstname;
 

@@ -17,7 +17,7 @@
         {{ form_label(form.address, 'Adresse email') }}
     </h6>
     <div>
-        {{ form(form.email) }}
+        {{ form(form.address) }}
     </div>
     <h6>
         {{ form_label(form.object, 'Objet') }}
@@ -26,7 +26,7 @@
         {{ form(form.object) }}
     </div>
     <h6>
-        {{ form_label(form.name, 'Message') }}
+        {{ form_label(form.message, 'Message') }}
     </h6>
     <div>
         {{ form(form.message) }}
@@ -43,7 +43,7 @@
     <div>
         {{ form(form.user) }}
     </div>
-
+    {{ form_rest(form) }}
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 </div>
 {{ form_end(form) }}
