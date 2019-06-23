@@ -38,3 +38,32 @@
 .edit{
     margin-bottom: 15px;
 }
+.login{
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+    background-image: url("../images/adminlogin.jpg");
+    background-size: cover;
+}
+.signIn{
+    background-color: white;
+    padding: 25px;
+}
+#Welcome{
+    padding: 30px;
+}
+.accueil{
+    height: 50vh;
+}
+.firstpage{
+    height: 100vh;
+    background-image: url("../images/fleurs_blanches3.jpg");
+    background-size: cover;
+}
+.edit{
+    margin:0;
+    padding: 0;
+}
+.bouton{
+    margin: 10px 0 20px 0;
+}

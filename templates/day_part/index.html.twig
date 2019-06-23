@@ -1,35 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DayPart index{% endblock %}
+{% block title %}DayPart{% endblock %}
 
 {% block body %}
-    <h1>DayPart index</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>DayPart</h3>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for day_part in day_parts %}
-            <tr>
-                <td>{{ day_part.id }}</td>
-                <td>{{ day_part.workingday.daydate }}</td>
-                <td>
-                    <a href="{{ path('day_part_show', {'id': day_part.id}) }}">show</a>
-                    <a href="{{ path('day_part_edit', {'id': day_part.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for day_part in day_parts %}
+                        <tr>
+                            <td>{{ day_part.id }}</td>
+                            <td>{{ day_part.workingday.daydate }}</td>
+                            <td>
+                                <div>
+                                    <a href="{{ path('day_part_show', {'id': day_part.id}) }}">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('day_part_edit', {'id': day_part.id}) }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <a href="{{ path('day_part_new') }}">Create new</a>
+                <a href="{{ path('day_part_new') }}">Create new</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

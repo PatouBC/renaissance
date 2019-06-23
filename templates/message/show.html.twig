@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h1>Message</h1>
+
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ message.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ message.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prénom</th>
+                        <td>{{ message.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Addresse mail</th>
+                        <td>{{ message.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Objet</th>
+                        <td>{{ message.object }}</td>
+                    </tr>
+                    <tr>
+                        <th>Message</th>
+                        <td>{{ message.message }}</td>
+                    </tr>
+                    <tr>
+                        <th>Message traité</th>
+                        <td>{{ message.treated ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="{{ path('message_index') }}">
+                        <button class="btn btn-secondary">Retour à la liste des messages</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ path('message_edit', {'id': message.id}) }}">
+                        <button class="btn btn-success">Modifier</button>
+                    </a>
+                </div>
+
+                {{ include('message/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

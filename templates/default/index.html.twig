@@ -7,18 +7,56 @@
 
 {% block body %}
 
-    <div class="container">
-        <div id="Welcome">
-            <h2>Bienvenue</h2>
+    <div class="container-fluid firstpage">
+        <div id="Welcome" class="text-center">
+            <h4>Bienvenue {{ app.user.username }}</h4>
 
             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                <h3>Vous êtes connecté {{ app.user.username }} {% if is_granted("ROLE_ADMIN") %} (admin) {% endif %}</h3>
-
-            {% else %}
-                <h5>
-                    Veuillez vous connecter
-                </h5>
+                <h6>Vous êtes connecté sur votre plateforme d'administration </h6>
             {% endif %}
+        </div>
+        <div class="row accueil">
+            <div class="col-6 text-center align-self-center">
+
+                    <h5>Messages en attente :</h5>
+
+                    <div>{% for message in messages %}
+                            {% if (message.treated==false) %}
+                                {% set count = count + 1 %}
+                            {% else %}
+                                {% set count = count + 0 %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if count != 0 %}
+                            Vous avez {{ count }} messages en attente
+                        {% else %}
+                            Vous n'avez pas de messages en attente de traitement
+                        {% endif %}
+                    </div>
+
+            </div>
+            <div class="col-6 text-center align-self-center">
+                <h5>Demandes de rendez-vous en attente de confirmation :</h5>
+
+                <div>{% for daypart in dayparts %}
+                        {% if (daypart.status.value == 10) %}
+                            {% set count2 = count2 + 1 %}
+                        {% else %}
+                            {% set count2 = count2 + 0 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if count2 != 0 %}
+                        {% if count2 == 1 %}
+                            Vous avez {{ count2 }} demande de rendez vous en attente
+                        {% else %}
+                            Vous avez {{ count2 }} demandes de rendez vous en attente
+                        {% endif %}
+                    {% else %}
+                        Vous n'avez pas de demandes de rendez-vous
+                    {% endif %}
+                </div>
+        </div>
+
         </div>
     </div>
 

@@ -1,6 +1,10 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Message;
+use App\Repository\DayPartRepository;
+use App\Repository\DayPartStatusRepository;
+use App\Repository\MessageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,10 +18,16 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(MessageRepository $messageRepository, DayPartRepository $dayPartRepository)
     {
+        $messages = $messageRepository->findAll();
+        $dayparts = $dayPartRepository->findAll();
         return $this->render('default/index.html.twig', [
-            'mainNavHome' => true
+            'messages' => $messages,
+            'mainNavHome' => true,
+            'count' => 0,
+            'dayparts' => $dayparts,
+            'count2' => 0
         ]);
     }
 

@@ -35,5 +35,14 @@ class ProductController extends AbstractFOSRestController
 
         return View::create($products, Response::HTTP_OK);
     }
+    /**
+     * @Rest\Get(
+     *     path="/{id}",
+     *     name="productshow_api")
+     */
+    public function show(Product $product): View
+    {
+        return View::create($product, Response::HTTP_OK);
+    }
 
 }

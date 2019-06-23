@@ -40,14 +40,14 @@ class User extends BaseUser
     private $rgpd;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Email", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
      */
-    private $emails;
+    private $messages;
 
     public function __construct()
     {
         parent::__construct();
-        $this->emails = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
 
@@ -112,33 +112,36 @@ class User extends BaseUser
     }
 
     /**
-     * @return Collection|Email[]
+     * @return Collection|Message[]
      */
-    public function getEmails(): Collection
+    public function getMessages(): Collection
     {
-        return $this->emails;
+        return $this->messages;
     }
 
-    public function addEmail(Email $email): self
+    public function addMessage(Message $message): self
     {
-        if (!$this->emails->contains($email)) {
-            $this->emails[] = $email;
-            $email->setUser($this);
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeEmail(Email $email): self
+    public function removeMessage(Message $message): self
     {
-        if ($this->emails->contains($email)) {
-            $this->emails->removeElement($email);
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
             // set the owning side to null (unless already changed)
-            if ($email->getUser() === $this) {
-                $email->setUser(null);
+            if ($message->getUser() === $this) {
+                $message->setUser(null);
             }
         }
 
         return $this;
     }
+
+ 
+
 }

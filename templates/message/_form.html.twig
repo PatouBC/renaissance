@@ -1,0 +1,42 @@
+{{ form_start(form) }}
+<div class="container">
+
+    <h6>
+        {{ form_label(form.name, 'Nom') }}
+    </h6>
+    <div>
+        {{ form(form.name,{'attr' :{'disabled':'disabled'}} ) }}
+    </div>
+    <h6>
+        {{ form_label(form.firstname, 'Prénom') }}
+    </h6>
+    <div>
+        {{ form(form.firstname,{'attr' :{'disabled':'disabled'}} ) }}
+    </div>
+    <h6>
+        {{ form_label(form.address, 'Adresse mail') }}
+    </h6>
+    <div>
+        {{ form(form.address,{'attr' :{'disabled':'disabled'}} ) }}
+    </div>
+    <h6>
+        {{ form_label(form.object, 'Objet') }}
+    </h6>
+    <div>
+        {{ form(form.object,{'attr' :{'disabled':'disabled'}} ) }}
+    </div>
+    <h6>
+        {{ form_label(form.message, 'Message') }}
+    </h6>
+    <div>
+        {{ form(form.message,{'attr' :{'disabled':'disabled'}} ) }}
+    </div>
+
+    {{ form_widget(form) }}
+</div>
+    <div>
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    </div>
+
+
+{{ form_end(form) }}

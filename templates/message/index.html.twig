@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Messages{% endblock %}
+{% block title %}Liste de messages{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-9">
+
                 <h3>Liste des messages</h3>
+
                 <table class="table">
                     <thead>
                     <tr>
@@ -14,36 +16,36 @@
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Utilisateur</th>
-                        <th>Email</th>
+                        <th>Adresse mail</th>
                         <th>Objet</th>
                         <th>Message</th>
-                        <th>Traitement</th>
+                        <th>Statut</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for email in emails %}
+                    {% for message in messages %}
                         <tr>
-                            <td>{{ email.id }}</td>
-                            <td>{{ email.name }}</td>
-                            <td>{{ email.firstname }}</td>
-                            <td>{% if(email.user) %}
-                                {{ email.user.name }} {{ email.user.firstname }}
+                            <td>{{ message.id }}</td>
+                            <td>{{ message.name }}</td>
+                            <td>{{ message.firstname }}</td>
+                            <td>{% if(message.user) %}
+                                {{ message.user.name }} {{ message.user.firstname }}
                                 {% endif %}
                             </td>
-                            <td>{{ email.address }}</td>
-                            <td>{{ email.object }}</td>
-                            <td>{{ email.message }}</td>
-                            <td>{{ email.treated ? 'Yes' : 'No' }}</td>
+                            <td>{{ message.address }}</td>
+                            <td>{{ message.object }}</td>
+                            <td>{{ message.message }}</td>
+                            <td>{{ message.treated ? 'Traité' : 'A traiter' }}</td>
                             <td>
                                 <div>
-                                    <a href="{{ path('email_show', {'id': email.id}) }}">
-                                        show
+                                    <a href="{{ path('message_show', {'id': message.id}) }}">
+                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="{{ path('email_edit', {'id': email.id}) }}">
-                                        edit
+                                    <a href="{{ path('message_edit', {'id': message.id}) }}">
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                 </div>
 
@@ -56,10 +58,6 @@
                     {% endfor %}
                     </tbody>
                 </table>
-
-                <a href="{{ path('email_new') }}">
-                    Create new
-                </a>
             </div>
         </div>
     </div>

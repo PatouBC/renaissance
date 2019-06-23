@@ -4,13 +4,11 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
-
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EmailRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
  *
  */
-class Email
+class Message
 {
     /**
      * @ORM\Id()
@@ -26,7 +24,6 @@ class Email
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      */
     private $firstname;
 
@@ -46,19 +43,20 @@ class Email
     private $message;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     private $rgpd;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     private $treated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="emails")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="messages")
      */
     private $user;
+
 
     public function getId(): ?int
     {
@@ -130,7 +128,7 @@ class Email
         return $this->rgpd;
     }
 
-    public function setRgpd(?bool $rgpd): self
+    public function setRgpd(bool $rgpd): self
     {
         $this->rgpd = $rgpd;
 
@@ -142,7 +140,7 @@ class Email
         return $this->treated;
     }
 
-    public function setTreated(?bool $treated): self
+    public function setTreated(bool $treated): self
     {
         $this->treated = $treated;
 
@@ -160,9 +158,5 @@ class Email
 
         return $this;
     }
-
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
+    
 }

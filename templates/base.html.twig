@@ -53,7 +53,7 @@
                             <a class="nav-link" href="{{ path('user_homepage') }}">Utilisateurs</a>
                         </li>
                         <li class="nav-item {% if mainNavEmail is defined %}active {% endif %}">
-                            <a class="nav-link" href="{{ path('email_homepage') }}">Messages</a>
+                            <a class="nav-link" href="{{ path('message_homepage') }}">Messages</a>
                         </li>
                         <li class="nav-item ">
                             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
