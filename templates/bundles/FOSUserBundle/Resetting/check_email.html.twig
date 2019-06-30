@@ -5,16 +5,23 @@
 {% block fos_user_content %}
     {% block nav %}
     {% endblock %}
-<p>
-{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
-</p>
-    <a href={% if is_granted("ROLE_ADMIN") %}
+    <div class="login d-flex align-items-center justify-content-center">
+        <div class="row signIn">
+            <div class="col">
+                <p>
+                    {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+                </p>
+                <a href={% if is_granted("ROLE_ADMIN") %}
             {{ "http://admin.renaissance-terrehappy.fr" }}
             {% else %}
             {{ "http://renaissance-terrehappy.fr" }}
-            {% endif %}>
-        <button class="btn btn-secondary">
-            {{ 'registration.back'|trans }}
-        </button>
-    </a>
+                        {% endif %}>
+                    <button class="btn btn-secondary">
+                        {{ 'registration.back'|trans }}
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

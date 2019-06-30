@@ -1,3 +1,15 @@
 <h4>Bonjour</h4>
 
-<p>Un nouvel utilisateur vient de demander un rendez-vous sur le site !!</p>
+<p>Vous avez une nouvelle demande de rendez-vous sur votre site :</p>
+
+<ul>
+    <li>{{ user.name }} {{ user.firstname }}</li>
+    <li>{{ daypart.workingday.daydate }}/
+        {{ daypart.workingday.daymonth }}/
+        {{ daypart.workingday.dayyear }}</li>
+    <li>{{ daypart.type.definition }}</li>
+    <li>{{ daypart.consult.description }}</li>
+</ul>
+<p>Connectez-vous sur
+    <a href="http://admin.renaissance-terrehappy.fr/login">votre plateforme</a>
+    pour confirmer le rendez-vous</p>

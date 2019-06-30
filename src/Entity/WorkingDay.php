@@ -38,6 +38,8 @@ class WorkingDay
      */
     private $dayparts;
 
+
+
     public function __construct()
     {
         $this->dayparts = new ArrayCollection();

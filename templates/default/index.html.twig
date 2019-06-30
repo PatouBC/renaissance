@@ -33,6 +33,10 @@
                             Vous n'avez pas de messages en attente de traitement
                         {% endif %}
                     </div>
+                <a href="{{ path('message_homepage') }}">
+                    <button class="btn btn-dark" >Voir mes messages</button>
+                </a>
+
 
             </div>
             <div class="col-6 text-center align-self-center">
@@ -55,6 +59,9 @@
                         Vous n'avez pas de demandes de rendez-vous
                     {% endif %}
                 </div>
+                <a href="{{ path('calendar_homepage') }}">
+                    <button class="btn btn-dark" >Voir mes rendez-vous</button>
+                </a>
         </div>
 
         </div>

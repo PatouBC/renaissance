@@ -39,4 +39,4 @@ user_homepage:
 
 message_homepage:
     path: /message
-    defaults: {_templates: email: index.html.twig }
+    defaults: {_templates: message: index.html.twig }

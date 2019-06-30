@@ -3,18 +3,19 @@
 {% block title %}Ajouter une actualité{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <h3>Ajouter une nouvelle actualité</h3>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Ajouter une nouvelle actualité</h3>
 
-            {{ include('actu/_form.html.twig') }}
-
-            <a href="{{ path('actu_index') }}">
-                <button class="btn btn-secondary">Retour à la liste des actualités</button>
-            </a>
+                {{ include('actu/_form.html.twig') }}
+                <div style="margin: 20px 0 20px 0">
+                    <a href="{{ path('actu_index') }}">
+                        <button class="btn btn-secondary">Retour à la liste des actualités</button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

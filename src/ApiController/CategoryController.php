@@ -2,8 +2,6 @@
 
 namespace App\ApiController;
 
-
-
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;

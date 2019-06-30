@@ -32,7 +32,7 @@ class CalendarController extends AbstractFOSRestController
     }
 
     /**
-     * Retrieves a collection of Task resource
+     * Retrieves a collection of Calendar resource
      * @Rest\Get(
      *     path = "/",
      *     name = "calendar_api"
@@ -42,8 +42,6 @@ class CalendarController extends AbstractFOSRestController
     public function index(WorkingDayRepository $workingDayRepository): View
     {
         $results = $workingDayRepository->findAll();
-        // In case our GET was a success we need to return a 200 HTTP OK
-        // response with the collection of workingdays object
         $workingDays = [];
         foreach ($results as $workingDay) {
             array_push($workingDays, $this->normalize($workingDay));

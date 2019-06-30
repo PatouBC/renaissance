@@ -7,14 +7,17 @@
         <div class="row justify-content-center">
             <div class="col-9">
                 <h3>Modifier une catégorie</h3>
-
-                {{ include('category/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-
-                <a href="{{ path('category_index') }}">
-                    <button class="btn btn-secondary">Retour à la liste des catégories</button>
-                </a>
-
-                {{ include('category/_delete_form.html.twig') }}
+                <div style="margin: 20px 0 20px 0">
+                {{ include('category/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+                </div>
+                <div>
+                    {{ include('category/_delete_form.html.twig') }}
+                </div>
+                <div style="margin: 20px 0 20px 0">
+                    <a href="{{ path('category_index') }}">
+                        <button class="btn btn-secondary">Retour à la liste des catégories</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

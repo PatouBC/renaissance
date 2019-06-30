@@ -17,7 +17,7 @@ class UserType extends AbstractType
         $builder
             ->add('name', null, array(
                 'label'=> 'Nom'))
-            ->add('surname', null, array(
+            ->add('firstname', null, array(
                 'label'=> 'Prénom'))
             ->add('enabled', null, array(
                 'label'=> 'Statut'))

@@ -9,10 +9,11 @@
                 <h3>Ajouter une nouvelle catégorie</h3>
 
                 {{ include('category/_form.html.twig') }}
-
-                <a href="{{ path('category_index') }}">
-                    <button class="btn btn-secondary">Retour à la liste des catégories</button>
-                </a>
+                <div style="margin: 20px 0 20px 0">
+                    <a href="{{ path('category_index') }}">
+                        <button class="btn btn-secondary">Retour à la liste des catégories</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
