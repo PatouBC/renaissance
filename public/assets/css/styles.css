@@ -48,7 +48,9 @@
 .signIn{
     background-color: white;
     padding: 25px;
+    width: 400px;
 }
+
 #Welcome{
     padding: 30px;
 }

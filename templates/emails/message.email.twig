@@ -1,0 +1,21 @@
+<h4>Bonjour </h4>
+
+<p>Vous avez reçu un nouveau message sur votre site internet :</p>
+
+
+<ul>
+    <li>{{ message.createdAt | date("d/m/Y") }}</li>
+    <li>{% if(message.user) %}
+            <span>Message provenant d'un utilisateur connecté :</span>
+            {{ message.user.name }} {{ message.user.firstname }}
+        {% else %}
+            <span>Message provenant d'un utilisateur non-connecté :</span>
+            {{ message.name }} {{ message.firstname }}
+        {% endif %}</li>
+    <li>{{ message.object }}</li>
+    <li>{{ message.message }}</li>
+</ul>
+
+<p>Connectez-vous sur
+    <a href="http://admin.renaissance-terrehappy.fr/login">votre plateforme</a>
+    pour indiquer que le message a bien été traité</p>

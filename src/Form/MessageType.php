@@ -28,7 +28,7 @@ class MessageType extends AbstractType
                 'label' => 'Message'
             ))
             ->add('treated', null, array(
-                'label' => 'Traitée'
+                'label' => 'Traité'
             ))
             ->add('user', null, array(
                 'label' => 'Utilisateur'

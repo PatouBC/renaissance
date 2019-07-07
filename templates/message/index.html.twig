@@ -12,7 +12,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>Date</th>
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Utilisateur</th>
@@ -26,7 +26,7 @@
                     <tbody>
                     {% for message in messages %}
                         <tr>
-                            <td>{{ message.id }}</td>
+                            <td>{{ message.createdAt | date("d/m/Y")}}</td>
                             <td>{{ message.name }}</td>
                             <td>{{ message.firstname }}</td>
                             <td>{% if(message.user) %}

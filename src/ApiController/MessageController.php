@@ -2,6 +2,7 @@
 namespace App\ApiController;
 
 use App\Entity\Message;
+use App\Event\MessageSentEvent;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -9,6 +10,7 @@ use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * @Rest\Route(
  *     path="/message",
@@ -16,6 +18,11 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class MessageController extends AbstractFOSRestController
 {
+    protected $dispatcher;
+    public function __construct(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
     /**
      * Retrieves a collection of Message resource
      * @Rest\Get(
@@ -59,6 +66,9 @@ class MessageController extends AbstractFOSRestController
         $message->setTreated(false);
         $message->setUser($this->getUser());
         $em = $this->getDoctrine()->getManager();
+
+        $messageEvent = new MessageSentEvent($message);
+        $this->dispatcher->dispatch('messageSent', $messageEvent);
         $em->persist($message);
         $em->flush();
         return View::create($message, Response::HTTP_CREATED);

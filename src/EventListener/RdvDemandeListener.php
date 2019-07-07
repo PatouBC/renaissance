@@ -41,12 +41,13 @@ class RdvDemandeListener implements EventSubscriberInterface
         $user = $event->getUser();
         if($daypart instanceof DayPart && $user instanceof User)
         {
-            $this->sendMail($daypart, $user);
+            $this->sendMailToAdmin($daypart, $user);
+            $this->sendMailToUser($daypart, $user);
             $event->stopPropagation();
         }
     }
 
-    private function sendMail(DayPart $daypart, User $user) : void
+    private function sendMailToAdmin(DayPart $daypart, User $user) : void
     {
         $sendTo  = 'patricia.bergez@gmail.com';
         $message = (new Swift_Message('Nouvelle demande de rendez-vous'))
@@ -55,6 +56,22 @@ class RdvDemandeListener implements EventSubscriberInterface
             ->setBody(
                 $this->templating->render(
                     'emails/rdv_demande.email.twig',
+                    ['user' => $user, 'daypart' => $daypart]
+                ),
+                'text/html'
+            );
+        $this->swift->send($message);
+    }
+
+    private function sendMailToUser(DayPart $daypart, User $user) : void
+    {
+        $sendTo  = $user->getEmail();
+        $message = (new Swift_Message('Votre demande de rendez-vous'))
+            ->setFrom('no-reply@renaissance-terrehappy.fr')
+            ->setTo($sendTo)
+            ->setBody(
+                $this->templating->render(
+                    'emails/rdv_demande_user.email.twig',
                     ['user' => $user, 'daypart' => $daypart]
                 ),
                 'text/html'
