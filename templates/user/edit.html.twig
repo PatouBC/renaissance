@@ -7,12 +7,14 @@
         <div class="row justify-content-center">
             <div class="col-9">
                 <h3>Modifier un Utilisateur</h3>
-
-                {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-                <a href="{{ path('user_index') }}">
-                    <button class="btn btn-secondary">Retour à la liste des utilisateurs</button>
-                </a>
+                <div style="margin: 20px 0 20px 0">
+                    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+                </div>
+                <div>
+                    <a href="{{ path('user_index') }}">
+                        <button class="btn btn-secondary">Annuler</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

@@ -20,6 +20,7 @@
                         <th>Objet</th>
                         <th>Message</th>
                         <th>Statut</th>
+                       <th>Traité le</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -37,6 +38,9 @@
                             <td>{{ message.object }}</td>
                             <td>{{ message.message }}</td>
                             <td>{{ message.treated ? 'Traité' : 'A traiter' }}</td>
+                            <td>{% if(message.treated == true) %}
+                                {{ message.updatedAt | date("d/m/Y")}}
+                                {% endif %}</td>
                             <td>
                                 <div>
                                     <a href="{{ path('message_show', {'id': message.id}) }}">
@@ -48,7 +52,6 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </div>
-
                             </td>
                         </tr>
                     {% else %}

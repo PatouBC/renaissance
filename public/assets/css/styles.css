@@ -1,3 +1,9 @@
+.accueilButton{
+    margin-top: 50px;
+}
+#calendar{
+    margin-bottom: 50px;
+}
 .fa-edit{
     color: blue;
     font-size: 25px;

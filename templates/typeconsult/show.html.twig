@@ -24,17 +24,21 @@
                     </tr>
                     </tbody>
                 </table>
-                <div>
-                    <a href="{{ path('typeconsult_index') }}">
-                        <button class="btn btn-secondary">Retour à la liste des types</button>
-                    </a>
-                </div>
-                <div>
+                <div style="margin: 20px 0 20px 0">
                     <a href="{{ path('typeconsult_edit', {'id': typeconsult.id}) }}">
                         <button class="btn btn-success">Modifier</button>
                     </a>
                 </div>
-                {{ include('typeconsult/_delete_form.html.twig') }}
+                <div>
+                    {{ include('typeconsult/_delete_form.html.twig') }}
+                </div>
+                <div style="margin: 20px 0 20px 0">
+                    <a href="{{ path('typeconsult_index') }}">
+                        <button class="btn btn-secondary">Annuler</button>
+                    </a>
+                </div>
+
+
             </div>
         </div>
     </div>

@@ -3,37 +3,37 @@
 {% block title %}Supprimer une actualité{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <h3>Supprimer une actualité</h3>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h3>Supprimer une actualité</h3>
 
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ actu.id }}</td>
-                </tr>
-                <tr>
-                    <th>Title</th>
-                    <td>{{ actu.title }}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td>{{ actu.description }}</td>
-                </tr>
-                <tr>
-                    <th>Image</th>
-                    <td><img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/></td>
-                </tr>
-                <tr>
-                    <th>Alt</th>
-                    <td>{{ actu.image.alt }}</td>
-                </tr>
-                </tbody>
-            </table>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ actu.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <td>{{ actu.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ actu.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Image</th>
+                        <td><img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Alt</th>
+                        <td>{{ actu.image.alt }}</td>
+                    </tr>
+                    </tbody>
+                </table>
 
-                <div  style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0">
                     <a href="{{ path('actu_edit', {'id': actu.id}) }}">
                         <button class="btn btn-success">Modifier</button>
                     </a>
@@ -41,16 +41,13 @@
                 <div>
                     {{ include('actu/_delete_form.html.twig') }}
                 </div>
-            <div style="margin: 20px 0 20px 0">
-                <a href="{{ path('actu_index') }}">
-                    <button class="btn btn-secondary">Retour à la liste des actualités</button>
-                </a>
+                <div style="margin: 20px 0 20px 0">
+                    <a href="{{ path('actu_index') }}">
+                        <button class="btn btn-secondary">Annuler</button>
+                    </a>
+                </div>
             </div>
-
-
-
         </div>
     </div>
-</div>
 
 {% endblock %}

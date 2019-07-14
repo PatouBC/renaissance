@@ -11,15 +11,13 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Description</th>
-                        <th>actions</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for indication in indications %}
                         <tr>
-                            <td>{{ indication.id }}</td>
                             <td>{{ indication.description }}</td>
                             <td>
                                 <div>
@@ -43,7 +41,7 @@
                 </table>
 
                 <a href="{{ path('indication_new') }}">
-                    <button class="btn btn-success"> Créer une indication</button>
+                    <button class="btn btn-success">Ajouter</button>
                 </a>
             </div>
         </div>
