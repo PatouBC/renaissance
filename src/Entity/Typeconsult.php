@@ -19,6 +19,11 @@ class Typeconsult
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $tittle;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $description;
 
     /**
@@ -39,6 +44,17 @@ class Typeconsult
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+    public function getTittle(): ?string
+    {
+        return $this->tittle;
+    }
+
+    public function setTittle(string $tittle): self
+    {
+        $this->tittle = $tittle;
 
         return $this;
     }
