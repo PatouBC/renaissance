@@ -40,7 +40,6 @@ class CalendarController extends AbstractController
      */
     public function index(Request $request, WorkingDayRepository $workingDayRepository): Response
     {
-
         if ($request->getMethod() == "POST")
         {
             $daysToCreate = $request->get('days');
@@ -49,7 +48,6 @@ class CalendarController extends AbstractController
                 $this->createWorkingDay($date, $workingDayRepository);
             }
         }
-
         $workingDays = $workingDayRepository->findAll();
         $events = [];
         foreach ($workingDays as $workingDay)
@@ -71,8 +69,6 @@ class CalendarController extends AbstractController
                 array_push($events, $event);
             }
         }
-
-
         return $this->render('calendar/index.html.twig', array(
             'events' => $events
         ));

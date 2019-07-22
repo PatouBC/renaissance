@@ -1,4 +1,25 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+
+    <h6>
+        {{ form_label(form.tittle, 'Titre') }}
+    </h6>
+    <div>
+        {{ form_widget(form.tittle)}}
+    </div>
+    <h6>
+        {{ form_label(form.description, 'Description') }}
+    </h6>
+    <div>
+        {{ form_widget(form.description)}}
+    </div>
+    <h6>
+        {{ form_label(form.rate, 'Prix') }}
+    </h6>
+    <div>
+        {{ form_widget(form.rate)}}
+    </div>
+    <div style="margin: 20px 0 20px 0">
+        <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+
 {{ form_end(form) }}

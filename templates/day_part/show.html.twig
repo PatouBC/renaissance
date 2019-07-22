@@ -12,10 +12,6 @@
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th>Id</th>
-                        <td>{{ day_part.id }}</td>
-                    </tr>
-                    <tr>
                         <th>Date</th>
                         <td>{{ day_part.workingday.daydate }}
                             /{{ day_part.workingday.daymonth }}
@@ -29,14 +25,16 @@
                         <th>Statut</th>
                         <td>{{ day_part.status.status }}</td>
                     </tr>
-                    {% if(day_part.status.value!=0) %}
+                    {% if( day_part.user) %}
                         <tr>
                             <th>Client</th>
                             <td>{{ day_part.user.name }} {{ day_part.user.firstname }}</td>
                         </tr>
+                    {% endif %}
+                    {% if(day_part.consult) %}
                         <tr>
                             <th>Type de consultation</th>
-                            <td>{{ day_part.consult.description }}</td>
+                            <td>{{ day_part.consult.tittle }}</td>
                         </tr>
                     {% endif %}
                     </tbody>
@@ -46,7 +44,7 @@
                         <button class="btn btn-success">Modifier</button>
                     </a>
                 </div>
-                <div >
+                <div>
                     {{ include('day_part/_delete_form.html.twig') }}
                 </div>
                 <div style="margin: 20px 0 20px 0">

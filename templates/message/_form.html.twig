@@ -1,5 +1,12 @@
+<h6>{{ message.createdAt | date("d/m/Y")}}</h6>
+<h4>{{ message.name }} {{ message.firstname }}</h4>
+<p>{{ message.address }}</p>
+<h6>{{ message.object }}</h6>
+<p>{{ message.message }}</p>
+
 {{ form_start(form) }}
-<div class="container">
+<div >
+
     {{ form_widget(form) }}
 </div>
     <div>

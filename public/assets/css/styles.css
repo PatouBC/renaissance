@@ -78,3 +78,6 @@
 .sort{
     cursor: pointer;
 }
+.messageList{
+    margin: 20px;
+}

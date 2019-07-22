@@ -7,12 +7,18 @@
         <div class="row justify-content-center">
             <div class="col-9">
                 <h3>Modifier un produit</h3>
-                {{ include('product/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                <div style="margin: 20px 0 20px 0">
+                    {{ include('product/_form.html.twig', {'button_label': 'Modifier'}) }}
+                </div>
+                <div>
+                    {{ include('product/_delete_form.html.twig') }}
+                </div>
+                <div style="margin: 20px 0 20px 0">
+                    <a href="{{ path('product_index') }}">
+                        <button class="btn btn-secondary">Annuler</button>
+                    </a>
+                </div>
 
-                <a href="{{ path('product_index') }}">
-                    <button class="btn btn-secondary">Annuler</button>
-                </a>
-                {{ include('product/_delete_form.html.twig') }}
             </div>
         </div>
     </div>

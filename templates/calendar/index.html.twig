@@ -5,15 +5,13 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-9">
                 <div id='calendar'></div>
                 <form id="workingdays-form" action="{{ path('calendar_index') }}" method="post">
                 </form>
             </div>
-
         </div>
     </div>
-
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('fullcalendar/core/main.js') }}"></script>

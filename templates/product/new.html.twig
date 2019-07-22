@@ -9,10 +9,11 @@
                 <h3>Ajouter un nouveau produit</h3>
 
                 {{ include('product/_form.html.twig') }}
-
-                <a href="{{ path('product_index') }}">
-                    <button class="btn btn-secondary">Annuler</button>
-                </a>
+                <div style="margin: 20px 0 20px 0">
+                    <a href="{{ path('product_index') }}">
+                        <button class="btn btn-secondary">Annuler</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

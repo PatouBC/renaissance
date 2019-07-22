@@ -28,7 +28,7 @@ class ProductController extends AbstractFOSRestController
     {
         $categoryId = $request->get('category');
         if (!empty($categoryId)) {
-            $products = $productRepository->findBy(array("category" => $categoryId));
+            $products = $productRepository->findBy(array('category' => $categoryId));
         } else {
             $products = $productRepository->findAll();
         }

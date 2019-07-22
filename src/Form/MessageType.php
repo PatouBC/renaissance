@@ -12,27 +12,11 @@ class MessageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array(
-                'label' => 'Nom'
-            ))
-            ->add('firstname', null, array(
-                'label' => 'Prénom'
-            ))
-            ->add('address', null, array(
-                'label' => 'Adresse mail'
-            ))
-            ->add('object', null, array(
-                'label' => 'Objet'
-            ))
-            ->add('message', null, array(
-                'label' => 'Message'
-            ))
+
             ->add('treated', null, array(
                 'label' => 'Traité'
             ))
-            ->add('user', null, array(
-                'label' => 'Utilisateur'
-            ))
+
         ;
     }
 

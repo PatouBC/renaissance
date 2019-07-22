@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col messageList">
 
                 <h3>Liste des messages</h3>
 
@@ -15,7 +15,7 @@
                         <th>Date</th>
                         <th>Nom</th>
                         <th>Prénom</th>
-                        <th>Utilisateur</th>
+                        <th>Utilisateur connecté</th>
                         <th>Adresse mail</th>
                         <th>Objet</th>
                         <th>Message</th>
@@ -31,7 +31,9 @@
                             <td>{{ message.name }}</td>
                             <td>{{ message.firstname }}</td>
                             <td>{% if(message.user) %}
-                                {{ message.user.name }} {{ message.user.firstname }}
+                                Oui
+                                {% else %}
+                                Non
                                 {% endif %}
                             </td>
                             <td>{{ message.address }}</td>
