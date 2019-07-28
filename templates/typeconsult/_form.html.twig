@@ -1,5 +1,5 @@
 {{ form_start(form) }}
-
+<div class="justify-content-center">
     <h6>
         {{ form_label(form.tittle, 'Titre') }}
     </h6>
@@ -18,8 +18,8 @@
     <div>
         {{ form_widget(form.rate)}}
     </div>
-    <div style="margin: 20px 0 20px 0">
+    <div style="margin: 20px 0 20px 0" class="row action">
         <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
     </div>
-
+</div>
 {{ form_end(form) }}

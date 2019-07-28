@@ -4,31 +4,27 @@
 
 {% block body %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-9">
+        <div class="row justify-content-center">
+            <div class="col-6">
                 <h3>Liste des indications</h3>
 
                 <table class="table">
                     <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ indication.id }}</td>
-                    </tr>
                     <tr>
                         <th>Description</th>
                         <td>{{ indication.description }}</td>
                     </tr>
                     </tbody>
                 </table>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('indication_edit', {'id': indication.id}) }}">
                         <button class="btn btn-success">Modifier</button>
                     </a>
                 </div>
-                <div>
+                <div class="row action">
                     {{ include('indication/_delete_form.html.twig') }}
                 </div>
-                <div style="margin: 20px 0 20px 0" >
+                <div style="margin: 20px 0 20px 0" class="row action" >
                     <a href="{{ path('indication_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>

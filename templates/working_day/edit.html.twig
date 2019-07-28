@@ -7,12 +7,16 @@
         <div class="row justify-content-center">
             <div class="col-6">
                 <h3>Modifier un jour</h3>
+                <div style="margin: 20px 0 20px 0">
+                {{ include('working_day/_form.html.twig', {'button_label': 'Modifier'}) }}
+                </div>
+                <div class="row action">
+                    {{ include('working_day/_delete_form.html.twig') }}
+                </div>
+                <div style="margin: 20px 0 20px 0" class="row action">
+                <a href="{{ path('calendar_index') }}">Annuler</a>
 
-                {{ include('working_day/_form.html.twig', {'button_label': 'Update'}) }}
-
-                <a href="{{ path('working_day_index') }}">back to list</a>
-
-                {{ include('working_day/_delete_form.html.twig') }}
+                </div>
             </div>
         </div>
     </div>

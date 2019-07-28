@@ -21,10 +21,10 @@
                 <div style="margin: 20px 0 20px 0">
                     {{ include('day_part/_form.html.twig', {'button_label': 'Modifier'}) }}
                 </div>
-                <div>
+                <div class="row action">
                     {{ include('day_part/_delete_form.html.twig') }}
                 </div>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('calendar_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>

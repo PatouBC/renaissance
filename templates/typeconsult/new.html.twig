@@ -5,11 +5,11 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-6">
                 <h3>Ajouter un type de consultation</h3>
 
                 {{ include('typeconsult/_form.html.twig') }}
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('typeconsult_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>

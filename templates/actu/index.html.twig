@@ -6,8 +6,12 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-9">
-                <h2>Liste des actualités</h2>
-
+                <h3>Liste des actualités</h3>
+                <div class="add row " >
+                    <a href="{{ path('actu_new') }}" >
+                        <button class="btn btn-success">Ajouter</button>
+                    </a>
+                </div>
                 <table class="table">
                     <thead>
                     <tr>
@@ -46,7 +50,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row add">
                     <a href="{{ path('actu_new') }}" >
                         <button class="btn btn-success">Ajouter</button>
                     </a>

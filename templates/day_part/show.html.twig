@@ -39,12 +39,12 @@
                     {% endif %}
                     </tbody>
                 </table>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('day_part_edit', {'id': day_part.id}) }}">
                         <button class="btn btn-success">Modifier</button>
                     </a>
                 </div>
-                <div>
+                <div class="row action">
                     {{ include('day_part/_delete_form.html.twig') }}
                 </div>
                 <div style="margin: 20px 0 20px 0">

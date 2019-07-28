@@ -8,12 +8,12 @@
             <div class="col-9">
                 <h3>Modifier une catégorie</h3>
                 <div style="margin: 20px 0 20px 0">
-                {{ include('category/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+                {{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
                 </div>
-                <div>
+                <div class="row action">
                     {{ include('category/_delete_form.html.twig') }}
                 </div>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('category_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>

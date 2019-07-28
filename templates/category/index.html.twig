@@ -7,6 +7,11 @@
         <div class="row justify-content-center">
             <div class="col-9">
                 <h3>Liste des catégories de produits</h3>
+                <div class="add row " >
+                    <a href="{{ path('category_new') }}">
+                        <button class="btn btn-success"> Ajouter</button>
+                    </a>
+                </div>
                 <table class="table">
                     <thead>
                     <tr>
@@ -40,7 +45,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row add">
                     <a href="{{ path('category_new') }}">
                         <button class="btn btn-success"> Ajouter</button>
                     </a>

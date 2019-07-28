@@ -6,14 +6,10 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-9">
-                <h1>Message</h1>
+                <h3>Message</h3>
 
                 <table class="table">
                     <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ message.id }}</td>
-                    </tr>
                     <tr>
                         <th>Nom</th>
                         <td>{{ message.name }}</td>
@@ -40,15 +36,15 @@
                     </tr>
                     </tbody>
                 </table>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('message_edit', {'id': message.id}) }}">
                         <button class="btn btn-success">Modifier</button>
                     </a>
                 </div>
-                <div>
+                <div class="row action">
                     {{ include('message/_delete_form.html.twig') }}
                 </div>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('message_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>

@@ -10,10 +10,10 @@
                 <div style="margin: 20px 0 20px 0">
                     {{ include('typeconsult/_form.html.twig', {'button_label': 'Modifier'}) }}
                 </div>
-                <div>
+                <div class="row action">
                     {{ include('typeconsult/_delete_form.html.twig') }}
                 </div>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('typeconsult_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>

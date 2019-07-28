@@ -5,11 +5,11 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-6">
                 <h3>Créneau à modifier</h3>
 
-                {{ include('day_part_type/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-                <div style="margin: 20px 0 20px 0">
+                {{ include('day_part_type/_form.html.twig', {'button_label': 'Modifier'}) }}
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('day_part_type_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>

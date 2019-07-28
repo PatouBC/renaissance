@@ -81,3 +81,11 @@
 .messageList{
     margin: 20px;
 }
+.add{
+    margin: 10px 0 10px 10px;
+    justify-content: flex-end;
+}
+.action{
+    justify-content: flex-end;
+    margin-right: 0px;
+}

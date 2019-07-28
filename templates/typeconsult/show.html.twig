@@ -5,34 +5,34 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-6">
                 <h3>Type de consultation</h3>
 
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th>Id</th>
-                        <td>{{ typeconsult.id }}</td>
+                        <th>Titre</th>
+                        <td>{{ typeconsult.tittle }}</td>
                     </tr>
                     <tr>
                         <th>Description</th>
                         <td>{{ typeconsult.description }}</td>
                     </tr>
                     <tr>
-                        <th>Rate</th>
+                        <th>Prix</th>
                         <td>{{ typeconsult.rate }}</td>
                     </tr>
                     </tbody>
                 </table>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('typeconsult_edit', {'id': typeconsult.id}) }}">
                         <button class="btn btn-success">Modifier</button>
                     </a>
                 </div>
-                <div style="margin: 20px 0 20px 0">
+                <div class="row action">
                     {{ include('typeconsult/_delete_form.html.twig') }}
                 </div>
-                <div style="margin: 20px 0 20px 0">
+                <div style="margin: 20px 0 20px 0" class="row action">
                     <a href="{{ path('typeconsult_index') }}">
                         <button class="btn btn-secondary">Annuler</button>
                     </a>
