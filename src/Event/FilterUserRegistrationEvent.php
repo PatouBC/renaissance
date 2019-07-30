@@ -2,7 +2,6 @@
 
 namespace App\Event;
 
-
 use App\Entity\User;
 use FOS\UserBundle\Event\UserEvent;
 use FOS\UserBundle\Model\UserInterface;

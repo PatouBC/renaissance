@@ -50,13 +50,13 @@ Class AuthController extends AbstractFOSRestController
             ->setSuperAdmin(false)
         ;
         try {
-            $this->eventDispatcher->dispatch('user_registration.created', new FilterUserRegistrationEvent($user, $request));
+            $this->eventDispatcher->dispatch('user_registration.created',
+                new FilterUserRegistrationEvent($user, $request));
             $userManager->updateUser($user);
         } catch (\Exception $e) {
             return View::create(["error" => $e->getMessage()], 500);
         }
         return View::create($user, Response::HTTP_CREATED);
-
     }
 
     /**

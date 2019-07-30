@@ -89,3 +89,10 @@
     justify-content: flex-end;
     margin-right: 0px;
 }
+.fond{
+    background-color: lightgrey;
+    min-height: 100vh;
+}
+.fond2{
+    background-color: white;
+}

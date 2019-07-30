@@ -3,9 +3,9 @@
 {% block title %}Types de consultation{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid fond">
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-9 fond2" style="margin: 20px">
                 <h3>Liste des types de consultation</h3>
                 <div class="row add">
                     <a href="{{ path('typeconsult_new') }}">
@@ -15,7 +15,6 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Prix</th>
@@ -25,7 +24,6 @@
                     <tbody>
                     {% for typeconsult in typeconsults %}
                         <tr>
-                            <td>{{ typeconsult.id }}</td>
                             <td>{{ typeconsult.tittle }}</td>
                             <td>{{ typeconsult.description }}</td>
                             <td>{{ typeconsult.rate }}</td>

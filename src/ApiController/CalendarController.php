@@ -50,7 +50,7 @@ class CalendarController extends AbstractFOSRestController
     }
 
     /**
-     * Retrieves a collection of Task resource
+     * Retrieves a collection of Rdv resource
      * @Rest\Put(
      *     path = "/addrdv",
      *     name = "calendar_addrdv_api"
