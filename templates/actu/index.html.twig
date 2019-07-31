@@ -15,7 +15,6 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Image</th>
@@ -25,7 +24,6 @@
                     <tbody>
                     {% for actu in actus %}
                         <tr>
-                            <td>{{ actu.id }}</td>
                             <td>{{ actu.title }}</td>
                             <td>{{ actu.description | raw }}</td>
                             <td>{% if(actu.image) %}<img src="{{ asset(actu.image.imgpath) }}" width="150px" alt="{{ actu.image.alt }}"/>{% endif %}</td>

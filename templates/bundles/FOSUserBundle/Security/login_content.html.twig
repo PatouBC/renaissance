@@ -5,9 +5,8 @@
 {% endif %}
 
 <div class="login d-flex align-items-center justify-content-center">
-    <div class="row signIn">
+    <div class="row signIn ">
         <div class="col">
-
             <form action="{{ path("fos_user_security_check") }}" method="post">
                 {% if csrf_token %}
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
@@ -25,11 +24,17 @@
                 <div>
                     <input type="password" id="password" name="_password" required="required" autocomplete="current-password"/>
                 </div>
-                <div>
+                <div >
                     <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
                     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                 </div>
-                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+
+                <div id="connectButton">
+                    <input id="inputButton" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+                </div>
+                <div id="mdpOubli">
+                    <a id="link" href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+                </div>
             </form>
         </div>
 

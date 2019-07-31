@@ -52,9 +52,8 @@
     background-size: cover;
 }
 .signIn{
-    background-color: white;
+    background-color: #ffffffb5;
     padding: 25px;
-    width: 400px;
 }
 
 #Welcome{
@@ -90,9 +89,27 @@
     margin-right: 0px;
 }
 .fond{
-    background-color: lightgrey;
+    background-image: url("../images/fondAdmin.jpg");
     min-height: 100vh;
 }
 .fond2{
     background-color: white;
+}
+#mdpOubli{
+    font-size: small;
+    margin-top: 10px;
+    text-align: center;
+}
+#link{
+    color: blueviolet;
+}
+#connectButton{
+    text-align: center;
+    margin-top: 15px;
+}
+#inputButton{
+    background-color: #707070;
+    color: white;
+    border-style: hidden;
+    cursor: pointer;
 }
