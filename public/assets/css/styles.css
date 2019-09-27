@@ -61,10 +61,17 @@
 }
 .accueil{
     height: 50vh;
+    justify-content: space-around;
+}
+.rappel{
+    background-color: #ffffffe3;
+    margin: 10px;
+    width: 540px;
+    padding: 10px;
 }
 .firstpage{
     height: 100vh;
-    background-image: url("../images/fleurs_blanches3.jpg");
+    background-image: url("../images/fondAdmin.jpg");
     background-size: cover;
 }
 .edit{
@@ -90,10 +97,20 @@
 }
 .fond{
     background-image: url("../images/fondAdmin.jpg");
-    min-height: 100vh;
+    min-height: 85vh;
 }
 .fond2{
-    background-color: white;
+    background-color: #ffffffe3;
+    overflow: auto;
+    height: 81vh;
+    padding: 20px;
+}
+.fondCalendar{
+    background-color: #ffffffe3;
+}
+#fondCal{
+    background-image: url("../images/fondAdmin.jpg");
+    min-height: 85vh;
 }
 #mdpOubli{
     font-size: small;

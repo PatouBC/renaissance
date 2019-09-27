@@ -12,9 +12,9 @@
                     {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
                 </p>
                 <a href={% if is_granted("ROLE_ADMIN") %}
-            {{ "http://admin.renaissance-terrehappy.fr" }}
+            {{ "https://admin.renaissance-terrehappy.fr" }}
             {% else %}
-            {{ "http://renaissance-terrehappy.fr" }}
+            {{ "https://renaissance-terrehappy.fr" }}
                         {% endif %}>
                     <button class="btn btn-secondary">
                         {{ 'registration.back'|trans }}

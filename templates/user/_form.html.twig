@@ -10,5 +10,7 @@
 </div>
 {% endif %}
 {{ form_widget(form) }}
+<div style="margin: 20px 0 20px 0" class="row action">
     <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+</div>
 {{ form_end(form) }}

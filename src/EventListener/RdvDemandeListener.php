@@ -49,7 +49,7 @@ class RdvDemandeListener implements EventSubscriberInterface
 
     private function sendMailToAdmin(DayPart $daypart, User $user) : void
     {
-        $sendTo  = 'patricia.bergez@gmail.com';
+        $sendTo  = 'perez.valerie@live.fr';
         $message = (new Swift_Message('Nouvelle demande de rendez-vous'))
             ->setFrom('no-reply@renaissance-terrehappy.fr')
             ->setTo($sendTo)

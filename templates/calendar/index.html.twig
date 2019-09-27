@@ -3,9 +3,9 @@
 {% block title %}Calendrier{% endblock %}
 
 {% block body %}
-    <div class="container-fluid" style="background-color: lightgrey;">
+    <div class="container-fluid" id="fondCal">
         <div class="row justify-content-center">
-            <div class="col-11 fond2 ">
+            <div class="col-11 fondCalendar ">
                 <div id='calendar'></div>
                 <form id="workingdays-form" action="{{ path('calendar_index') }}" method="post">
                 </form>

@@ -48,7 +48,7 @@ class MessageSentListener implements EventSubscriberInterface
 
     private function sendMailToAdmin(Message $message) : void
     {
-        $sendTo  = 'patricia.bergez@gmail.com';
+        $sendTo  = 'perez.valerie@live.fr';
         $email = (new Swift_Message('Nouveau message'))
             ->setFrom('no-reply@renaissance-terrehappy.fr')
             ->setTo($sendTo)

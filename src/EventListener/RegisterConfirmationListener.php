@@ -79,7 +79,7 @@ class RegisterConfirmationListener implements EventSubscriberInterface
     {
         /** @var $user \FOS\UserBundle\Model\UserInterface */
         $user = $event->getUser();
-        $sendTo = 'patricia.bergez@gmail.com';
+        $sendTo = 'perez.valerie@live.fr';
         $message = (new \Swift_Message('Nouvel Utilisateur !'))
             ->setFrom('no-reply@renaissance-terrehappy.fr')
             ->setTo($sendTo)
